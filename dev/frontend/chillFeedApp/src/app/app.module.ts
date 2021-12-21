@@ -8,11 +8,14 @@ import { LogInComponent } from './log-in/log-in.component';
 import {  RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ClientInfoComponent } from './client-info/client-info.component';
+
 
 
 const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'log-in', component :LogInComponent},
+  { path: 'client-info', component : ClientInfoComponent},
   { path: 'not-found', component: ErrorPageComponent },
   { path: '**' , redirectTo: 'not-found'}
 ];
@@ -21,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SignInComponent,
-    LogInComponent
+    LogInComponent,
+    ClientInfoComponent
   ],
   imports: [
     BrowserModule,
