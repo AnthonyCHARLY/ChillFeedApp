@@ -8,12 +8,17 @@ import { LogInComponent } from './log-in/log-in.component';
 import {  RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ListClientComponent } from './list-client/list-client.component';
+import { CurrentWeekComponent } from './current-week/current-week.component';
 
 
 const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'log-in', component :LogInComponent},
   { path: 'not-found', component: ErrorPageComponent },
+  {path:'listclient', component: ListClientComponent },
+  {path:'week', component: CurrentWeekComponent },
   { path: '**' , redirectTo: 'not-found'}
 ];
 
@@ -21,7 +26,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SignInComponent,
-    LogInComponent
+    LogInComponent,
+    NavBarComponent,
+    ListClientComponent,
+    CurrentWeekComponent
   ],
   imports: [
     BrowserModule,
