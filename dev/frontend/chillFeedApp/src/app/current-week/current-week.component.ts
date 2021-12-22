@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./current-week.component.css']
 })
 export class CurrentWeekComponent implements OnInit {
-
+ 
+  
   constructor() { }
 
+  
   ngOnInit(): void {
+   
+      
   }
-
+ 
 }
