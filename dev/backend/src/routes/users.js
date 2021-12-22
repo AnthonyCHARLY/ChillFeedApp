@@ -1,11 +1,11 @@
 const usersRouter = require('express').Router();
 
 
-const { addUser } = require('../controllers/userController');
+const { createUser , loginUser } = require('../controllers/userController');
 
 
 usersRouter.route('/addOne').post(async(req,res)=> {
-    let response = await addUser(req.body);
+    let response = await createUser(req.body);
     if (response.success == true) {
         res.status(200).json(response);
     } else {
@@ -13,6 +13,15 @@ usersRouter.route('/addOne').post(async(req,res)=> {
     }
 });
 
+usersRouter.route('/findOne').post(async(req,res)=> {
+    let response = await loginUser(req.body.email,req.body.password);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+       
+})
 
 
 module.exports = usersRouter

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+
+  private userData = {
+    email : '',
+    password : ''
+  };
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: NgForm) {
+
+    this.userData.email = form.value.email;
+    this.userData.password = form.value.password;
+
+
+    this.httpClient.post('http://localhost:5000/api/users/findOne', this.userData).
+          subscribe(
+            (rep:any) => { 
+              console.log(rep); 
+            }
+          )
   }
 
 }
