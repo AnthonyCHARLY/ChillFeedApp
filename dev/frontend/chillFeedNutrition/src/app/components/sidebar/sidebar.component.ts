@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogInComponent } from 'app/log-in/log-in.component';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -11,8 +12,8 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
     { path: '/user-profile', title: 'Sign-In',  icon:'person', class: '', loged: false },
-    { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false},
-    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: true}
+    { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false },
+    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: false }
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },
     //{ path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '', loged: true },
@@ -47,5 +48,13 @@ export class SidebarComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  logIn(){
+    this.loged = true;
+  }
+
+  logOut(){
+    this.loged = false;
   }
 }
