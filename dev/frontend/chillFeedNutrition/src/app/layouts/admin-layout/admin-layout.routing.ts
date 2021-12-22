@@ -10,6 +10,9 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
+import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
+import { ClientComponentComponent } from 'app/client-component/client-component.component';
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -54,12 +57,15 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'log-in',         component: LogInComponent},
+
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+
+    { path: 'sign-in',   component: UserProfileComponent },
+    { path: 'log-in',         component: LogInComponent},
+    { path: 'clients',        component: ClientComponentComponent}
 ];
