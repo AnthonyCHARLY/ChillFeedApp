@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ClientInfoComponent } from './client-info/client-info.component';
 
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ListClientComponent } from './list-client/list-client.component';
+import { CurrentWeekComponent } from './current-week/current-week.component';
 
 
 const appRoutes: Routes = [
@@ -17,6 +20,8 @@ const appRoutes: Routes = [
   { path: 'log-in', component :LogInComponent},
   { path: 'client-info', component : ClientInfoComponent},
   { path: 'not-found', component: ErrorPageComponent },
+  {path:'listclient', component: ListClientComponent },
+  {path:'week', component: CurrentWeekComponent },
   { path: '**' , redirectTo: 'not-found'}
 ];
 
@@ -25,7 +30,10 @@ const appRoutes: Routes = [
     AppComponent,
     SignInComponent,
     LogInComponent,
-    ClientInfoComponent
+    ClientInfoComponent,
+    NavBarComponent,
+    ListClientComponent,
+    CurrentWeekComponent
   ],
   imports: [
     BrowserModule,
