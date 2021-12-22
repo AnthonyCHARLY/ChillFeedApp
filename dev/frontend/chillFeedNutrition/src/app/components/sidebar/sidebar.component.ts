@@ -11,7 +11,8 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
     { path: '/user-profile', title: 'Sign-In',  icon:'person', class: '', loged: false },
-    { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false}
+    { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false},
+    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: true}
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },
     //{ path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '', loged: true },
@@ -27,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
+  loged: boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -40,4 +41,11 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+  isLoged(val: boolean){
+    if(val === this.loged){
+      return true;
+    }
+    return false;
+  }
 }
