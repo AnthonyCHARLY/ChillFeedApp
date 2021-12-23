@@ -23,4 +23,7 @@ const routes = require("./routes/index");
 
 app.use('/api',routes);
 
+
+
+
 app.listen(process.env.PORT || 5000, () => console.log('Up and running 🚀'));

@@ -1,0 +1,61 @@
+### Default URL
+GET http://localhost:5000/
+
+### Default API URL
+GET http://localhost:5000/api
+
+
+### Get User login
+POST http://localhost:5000/api/users/log-in
+content-type: application/json
+
+{
+    "email":"titi@gmail.com",
+    "password":"12345"
+}
+
+### Add User when sign-in
+POST http://localhost:5000/api/users/addOne
+content-type: application/json
+
+{
+    "email":"titi@gmail.com",
+    "password":"12345"
+}
+
+### Add Customer 
+POST http://localhost:5000/api/users/61c4461703cde22d5bdd71bd/addCustomer
+Content-Type: application/json
+
+{
+    "name "     : "yassir",
+    "email"    : "yassir@gmail.com",
+    "age"       : "24", 
+    "weight"    : "70", 
+    "height"    : "170", 
+    "morphology": "ectomorphe", 
+    "activity"  : "student",
+    "goal"      : "weight gain",
+    "weightGoal": "80"
+}
+
+### Get customer by email 
+POST http://localhost:5000/api/customers/findOne
+Content-Type: application/json
+
+{
+    "email"    : "yassir@gmail.com"
+}
+
+### Add ingredient
+POST http://localhost:5000/api/ingredients/addOne
+Content-Type: application/json
+
+{
+    "name"      : "apple",
+    "protein"   : "3.3",
+    "lipid"     : "1.5",
+    "carbs"     : "5",
+    "Kcal"      : "46"
+    
+}
