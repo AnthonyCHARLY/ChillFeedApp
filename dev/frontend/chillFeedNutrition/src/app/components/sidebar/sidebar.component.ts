@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogInComponent } from 'app/log-in/log-in.component';
+import { AuthService } from 'app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -13,7 +15,13 @@ export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
     { path: '/sign-in', title: 'Sign-In',  icon:'person', class: '', loged: false },
     { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false },
-    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: false }
+    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: false },
+
+    { path: '/register-customers', title: 'Register Customer', icon: 'person', class: '', loged: true},
+    { path: '/clients', title: 'Client', icon: 'person', class: '', loged: true},
+    { path: '/register-ingredients', title: 'Register Ingredients', icon: 'person', class: '', loged: true},
+    { path: '/register-receipts', title: 'Register Recipes', icon: 'person', class: '', loged: true},
+    { path: '/recipes', title: 'Recipes', icon: 'person', class: '', loged: true}
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },
     //{ path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '', loged: true },
@@ -28,12 +36,21 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+
   menuItems: any[];
+
   loged: boolean = false;
-  constructor() { }
+  logedSubscription: Subscription;
+
+  constructor(private authService : AuthService ) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.logedSubscription = this.authService.isLogedSubject.subscribe(
+      (loged:boolean) => {
+        this.loged = loged;
+      }
+    )
   }
   
   isMobileMenu() {
@@ -47,7 +64,7 @@ export class SidebarComponent implements OnInit {
     if(val === this.loged){
       return true;
     }
-    return false;
+    return false; 
   }
 
   logIn(){
