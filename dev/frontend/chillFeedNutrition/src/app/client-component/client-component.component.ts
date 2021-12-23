@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{ ApiService} from '../services/api.service'
 
 @Component({
   selector: 'app-client-component',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apifood: ApiService) { 
+   this.apifood.getDataApi().subscribe(data=>{
+     console.log(data);
+    })
+
+    //this.apifood.getData().then(()=>{console.log('ouiii')});
+    
+  }
 
   ngOnInit(): void {
+    
   }
 
 }

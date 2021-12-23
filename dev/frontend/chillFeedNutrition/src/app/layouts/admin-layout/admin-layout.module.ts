@@ -22,6 +22,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
 import { ClientCurveComponent } from 'app/clients-components/client-curve/client-curve.component';
+import { RegisterCustomersComponent } from 'app/register-customers/register-customers.component';
+import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
+import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 
 @NgModule({
   imports: [
@@ -49,7 +52,10 @@ import { ClientCurveComponent } from 'app/clients-components/client-curve/client
     LogInComponent,
     ClientListComponent,
     ClientComponentComponent,
-    ClientCurveComponent
+    ClientCurveComponent,
+    RegisterCustomersComponent,
+    RegisterIngredientComponent,
+    RegisterReceiptsComponent
   ]
 })
 

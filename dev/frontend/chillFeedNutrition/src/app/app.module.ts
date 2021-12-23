@@ -26,6 +26,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ClientListComponent } from './clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from './client-component/client-component.component';
 import { ClientCurveComponent } from './clients-components/client-curve/client-curve.component';
+import { RegisterCustomersComponent } from './register-customers/register-customers.component';
+import { RegisterIngredientComponent } from './register-ingredient/register-ingredient.component';
+import { RegisterReceiptsComponent } from './register-receipts/register-receipts.component';
 
 @NgModule({
   imports: [
@@ -42,7 +45,10 @@ import { ClientCurveComponent } from './clients-components/client-curve/client-c
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
+    
+    
+   
    
   
 

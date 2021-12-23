@@ -12,6 +12,10 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
+import { RegisterCustomersComponent } from 'app/register-customers/register-customers.component';
+import { Component } from '@angular/core';
+import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
+import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -67,5 +71,8 @@ export const AdminLayoutRoutes: Routes = [
 
     { path: 'sign-in',   component: UserProfileComponent },
     { path: 'log-in',         component: LogInComponent},
-    { path: 'clients',        component: ClientComponentComponent}
+    { path: 'clients',        component: ClientComponentComponent},
+    { path: 'register-customers', component: RegisterCustomersComponent},
+    { path: 'register-ingredients', component: RegisterIngredientComponent},
+    { path: 'register-receipts', component: RegisterReceiptsComponent}
 ];
