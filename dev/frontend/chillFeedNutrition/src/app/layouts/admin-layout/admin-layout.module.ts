@@ -25,6 +25,7 @@ import { ClientCurveComponent } from 'app/clients-components/client-curve/client
 import { RegisterCustomersComponent } from 'app/register-customers/register-customers.component';
 import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
+import { RecipesComponent } from 'app/recipes/recipes.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { RegisterReceiptsComponent } from 'app/register-receipts/register-receip
     ClientCurveComponent,
     RegisterCustomersComponent,
     RegisterIngredientComponent,
-    RegisterReceiptsComponent
+    RegisterReceiptsComponent,
+    RecipesComponent
   ]
 })
 

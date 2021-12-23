@@ -9,11 +9,11 @@ import{ ApiService} from '../services/api.service'
 export class ClientComponentComponent implements OnInit {
 
   constructor(private apifood: ApiService) { 
-   this.apifood.getDataApi().subscribe(data=>{
-     console.log(data);
-    })
+   //this.apifood.getDataApi().subscribe(data=>{
+    // console.log(data);
+    //})
 
-    //this.apifood.getData().then(()=>{console.log('ouiii')});
+    this.apifood.getData("tomato").then(()=>{console.log('ouiii')});
     
   }
 

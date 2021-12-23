@@ -29,6 +29,7 @@ import { ClientCurveComponent } from './clients-components/client-curve/client-c
 import { RegisterCustomersComponent } from './register-customers/register-customers.component';
 import { RegisterIngredientComponent } from './register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from './register-receipts/register-receipts.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { RegisterReceiptsComponent } from './register-receipts/register-receipts
   declarations: [
     AppComponent,
     AdminLayoutComponent
+    
     
     
    

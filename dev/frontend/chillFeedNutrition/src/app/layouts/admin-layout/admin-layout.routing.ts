@@ -16,6 +16,7 @@ import { RegisterCustomersComponent } from 'app/register-customers/register-cust
 import { Component } from '@angular/core';
 import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
+import { RecipesComponent } from 'app/recipes/recipes.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -74,5 +75,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clients',        component: ClientComponentComponent},
     { path: 'register-customers', component: RegisterCustomersComponent},
     { path: 'register-ingredients', component: RegisterIngredientComponent},
-    { path: 'register-receipts', component: RegisterReceiptsComponent}
+    { path: 'register-receipts', component: RegisterReceiptsComponent},
+    { path: 'recipes', component: RecipesComponent}
 ];
