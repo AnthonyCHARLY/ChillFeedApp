@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -9,13 +11,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LogInComponent implements OnInit {
 
+  logAlert: boolean;
 
   private userData = {
     email : '',
     password : ''
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authService: AuthService) { 
+    this.logAlert = false ;  
+  }
 
   ngOnInit(): void {
   }
@@ -25,13 +30,14 @@ export class LogInComponent implements OnInit {
     this.userData.email = form.value.email;
     this.userData.password = form.value.password;
 
-
-    this.httpClient.post('http://localhost:5000/api/users/findOne', this.userData).
-          subscribe(
-            (rep:any) => { 
-              console.log(rep); 
-            }
-          )
+    this.authService.logIn(this.userData).then(
+      () => {
+        this.router.navigate(['clients']);
+      },
+      () =>{
+        this.logAlert = true;
+      }
+    )
   }
 
 }
