@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Customer = require('../models/customerModel');
 
 
 module.exports.createUser = async function(body) {
@@ -13,9 +14,6 @@ module.exports.createUser = async function(body) {
                 msg: "email Already Exists"
             }
         }
-
-
-        console.log(body);
 
         user = new User({
             ...body
@@ -32,7 +30,7 @@ module.exports.createUser = async function(body) {
         }
 
     } catch (err) {
-        return { success: false, message: "cannot add user " + err };
+        return { success: false, message: "can not add user " + err };
     }
 
 }
@@ -71,3 +69,31 @@ module.exports.loginUser = async function(email, password) {
 
 }
 
+
+module.exports.addCustomer = async function(id,body){
+    try {
+        let customer = new Customer({
+            ...body
+        });
+       
+        
+        let user = await User.findById(id);
+        
+        user.customers.push(customer);
+
+
+        customer.save().then(doc =>{}).catch(err =>{});
+        user.save().then(doc =>{}).catch(err =>{});
+
+        return {
+            success: true,
+            data: customer
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not add customer " + err
+        };
+    }
+}
