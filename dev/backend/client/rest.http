@@ -41,9 +41,21 @@ Content-Type: application/json
 
 ### Get customer by email 
 POST http://localhost:5000/api/customers/findOne
-
 Content-Type: application/json
 
 {
     "email"    : "yassir@gmail.com"
+}
+
+### Add ingredient
+POST http://localhost:5000/api/ingredients/addOne
+Content-Type: application/json
+
+{
+    "name"      : "apple",
+    "protein"   : "3.3",
+    "lipid"     : "1.5",
+    "carbs"     : "5",
+    "Kcal"      : "46"
+    
 }
