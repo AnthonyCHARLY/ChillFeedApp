@@ -15,5 +15,8 @@ export class RegisterIngredientComponent implements OnInit {
   onSubmit(form: NgForm) {
    
   }
+  onSubmit2(form: NgForm) {
+   
+  }
 
 }
