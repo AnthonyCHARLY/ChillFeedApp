@@ -8,39 +8,40 @@
                         <p class="card-category">Create new ingredient </p>
                     </div>
                     <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <form method="post" (ngSubmit)="onCreate(f)" #f="ngForm">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required >
+                                        <input matInput placeholder="Name" name="name" ngModel required>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-8">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Protein" name="protein" type="number"  ngModel >
+                                        <input matInput placeholder="Protein" name="protein" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Lipid" name="lipid" type="number" ngModel >
+                                        <input matInput placeholder="Lipid" name="lipid" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Carbs" name="carbs" type="number" ngModel >
+                                        <input matInput placeholder="Carbs" name="carbs" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Kcal" name="kcal" type="number" ngModel >
+                                        <input matInput placeholder="kcal" name="kcal" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="f.invalid">Create</button>
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        [disabled]="f.invalid">Create</button>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
@@ -48,33 +49,78 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-6 col-md-12">
+                <div class="row">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">New ingredient</h4>
                         <p class="card-category">Find an ingredient </p>
                     </div>
                     <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit2(f1)" #f1="ngForm">
+                        <form method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required  >
+                                        <input matInput placeholder="Name" name="name" ngModel required>
                                     </mat-form-field>
                                 </div>
-                               
-                            
-                            
-                                
                                 <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="f1.invalid">Search</button>
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        [disabled]="f1.invalid">Search</button>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
+                </div>
+                <div class="row" *ngIf="submitSearch">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger" >
+                              <h4 class="card-title">Ingredient Information</h4>
+                              <p class="card-category">{{this.ingredientData.name}}</p>
+                            </div>
+                            <div class="card-content table-responsive table-full-width">
+                              <table class="table">
+                                <thead class="text-danger">
+                                  <th>Information</th>
+                                  <th>Value</th>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>protein</td>
+                                    <td>{{this.ingredientData.protein}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>lipid</td>
+                                    <td>{{this.ingredientData.lipid}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>kcal</td>
+                                    <td>{{this.ingredientData.kcal}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>carbs</td>
+                                    <td>{{this.ingredientData.carbs}}</td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+                              
+                            </div>
+                            <div class="col-md-4">
+                                <button mat-raised-button (click)="onSave()" class="btn btn-danger pull-right">Save</button>
+                            </div>
+                          </div>
+                            </div>
+                </div>
+
             </div>
         </div>
+
+
+
     </div>
 </div>

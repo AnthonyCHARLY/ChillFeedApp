@@ -7,7 +7,6 @@ module.exports.addIngredient = async function(body){
         let ingredient = new Ingredient({
             ...body
         });
-
         ingredient.save().then(doc =>{}).catch(err =>{});
 
         return {

@@ -14,9 +14,6 @@ export class RecipesComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(form: NgForm) {
-    this.search = form.value.name;
-    console.log("forme "+ this.search);
-    this.apifood.getData(this.search).then(()=>{console.log('ouiii')});
   }
 
 

@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from './auth.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class CustomerService {
-    constructor( private httpClient : HttpClient, private authService : AuthService){
+export class IngredientService {
+
+    constructor(private httpClient : HttpClient){
     }
 
-    addCustomer(customerData : object ){
-
+    addIngredient(ingredientData : object ){
         return new Promise((resolve, rejected) => {
-            let currentUserId = this.authService.getCurentUserId();
-            console.log(currentUserId);
-            
-            this.httpClient.post('http://localhost:5000/api/users/'+currentUserId+'/addCustomer', customerData)
+            this.httpClient.post('http://localhost:5000/api/ingredients/addOne', ingredientData)
               .subscribe(
                 (data: any) => {
                   console.log(data);     
@@ -32,7 +28,5 @@ export class CustomerService {
           })
 
     }
-
-
 
 }

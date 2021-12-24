@@ -58,4 +58,8 @@ export class AuthService {
 
     })
   }
+
+  getCurentUserId(){
+    return this.currentUserId;
+  }
 }

@@ -6,7 +6,7 @@ const ingredientSchema = new mongoose.Schema({
     protein   : {type : Number},
     lipid     : {type : Number},
     carbs     : {type : Number},
-    Kcal      : {type : Number},
+    kcal      : {type : Number},
 });
 
 
