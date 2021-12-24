@@ -28,7 +28,7 @@ POST http://localhost:5000/api/users/61c4461703cde22d5bdd71bd/addCustomer
 Content-Type: application/json
 
 {
-    "name "     : "yassir",
+    "name"     : "yassir",
     "email"    : "yassir@gmail.com",
     "age"       : "24", 
     "weight"    : "70", 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { CustomerService } from 'app/services/customer.service';
+
 
 @Component({
   selector: 'app-register-customers',
@@ -8,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterCustomersComponent implements OnInit {
 
-  userData = {
+  customerData = {
     name     : "",
     email    : "",
     age      : 0, 
@@ -20,20 +22,23 @@ export class RegisterCustomersComponent implements OnInit {
     weightGoal: 0
 }
 
-  constructor() { }
+  constructor(private customerService : CustomerService) { }
 
   ngOnInit(): void {
   }
   onSubmit(form: NgForm) {
-    this.userData.email = form.value.email;
-    this.userData.name = form.value.name;
-    this.userData.age = form.value.age;
-    this.userData.weight = form.value.weight;
-    this.userData.morphology = form.value.morphology;
-    this.userData.activity = form.value.activity;
-    this.userData.goal = form.value.goal;
-    this.userData.weightGoal = form.value.weightGoal;
+    this.customerData.email = form.value.email;
+    this.customerData.name = form.value.name;
+    this.customerData.age = form.value.age;
+    this.customerData.weight = form.value.weight;
+    this.customerData.height = form.value.height;
+    this.customerData.morphology = form.value.morphology;
+    this.customerData.activity = form.value.activity;
+    this.customerData.goal = form.value.goal;
+    this.customerData.weightGoal = form.value.weightGoal;
    
+
+    this.customerService.addCustomer(this.customerData);
   }
 
 }
