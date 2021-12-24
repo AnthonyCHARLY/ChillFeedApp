@@ -15,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
     { path: '/sign-in', title: 'Sign-In',  icon:'person', class: '', loged: false },
     { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false },
-    { path: '/home', title: 'Log-Out', icon:'person', class:'', loged: false },
+    { path: '/log-in', title: 'Log-Out', icon:'person', class:'', loged: true },
 
     { path: '/register-customers', title: 'Register Customer', icon: 'person', class: '', loged: true},
     { path: '/clients', title: 'Client', icon: 'person', class: '', loged: true},

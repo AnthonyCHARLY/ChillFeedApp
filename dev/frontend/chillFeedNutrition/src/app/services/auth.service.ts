@@ -20,6 +20,11 @@ export class AuthService {
   }
 
 
+  logOut(){
+    this.isLoged = false;
+     this.isLogedSubject.next(this.isLoged);
+  }
+
 
   logIn(userData: object) {
     return new Promise((resolve, rejected) => {
@@ -46,8 +51,10 @@ export class AuthService {
       this.httpClient.post(' http://localhost:5000/api/users/addOne', userData)
         .subscribe(
           (data: any) => {
+            /*
             this.isLoged = true;
-            this.isLogedSubject.next(this.isLoged);            
+            this.isLogedSubject.next(this.isLoged); 
+            */           
             resolve(true);
           },
           error => {

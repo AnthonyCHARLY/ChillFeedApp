@@ -23,6 +23,7 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.logOut();
   }
 
   onSubmit(form: NgForm) {
