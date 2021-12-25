@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+//yaya
+import {map, skipWhile, tap} from 'rxjs/operators'
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +23,17 @@ export class ApiService {
 
 
   getDataApi() {
-    let url = "https://api.nutritionix.com/v1_1/search";
+    let url = "https://api.nutritionix.com/v1_1/";
     return this.httpClient.get(url);
   }
-
+  //autocomplete
+  getDataAutocomplete(search: string){
+  //  return this.httpClient.get('https://api.nutritionix.com/v1_1/search/' + search +'?results=0:10&fields=*&appId=c7387d2b&appKey=3b0ac5384668b3cabe3287e1c6cb3c76')
+    //  .pipe(
+      //  map((response:[]) => response.map(item => item['name']))
+      //)
+      return ['yassir',"hassan","w","estelle"];
+  }
 
   getData(search: string, ingredientData :any) {
     return new Promise(
@@ -31,6 +42,7 @@ export class ApiService {
           .get<any[]>('https://api.nutritionix.com/v1_1/search/' + search +'?results=0:10&fields=*&appId=c7387d2b&appKey=3b0ac5384668b3cabe3287e1c6cb3c76')
           .subscribe(
             (response: any) => {
+              console.log(response);
               //for (var i = 0; i < response.hits.length; i++) {
                 ingredientData.name = response.hits[0].fields.item_name;
                 ingredientData.kcal = response.hits[0].fields.nf_calories;

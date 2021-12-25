@@ -58,20 +58,21 @@
                         <p class="card-category">Find an ingredient </p>
                     </div>
                     <div class="card-body">
-                        <form method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                                        [disabled]="f1.invalid">Search</button>
-                                </div>
+                        
+                        <form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
+                            <mat-form-field>
+                              <input formControlName="name" matInput type="text" [matAutocomplete]="auto" name="name" ngModel required />
+                              <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                                  {{item}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                            <div class="col-md-4">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                    [disabled]="f1.invalid">Search</button>
                             </div>
-                            <div class="clearfix"></div>
-                        </form>
+                          </form>
                     </div>
                 </div>
                 </div>
@@ -124,3 +125,7 @@
 
     </div>
 </div>
+
+
+    
+  

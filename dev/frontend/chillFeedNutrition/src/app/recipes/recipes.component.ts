@@ -9,11 +9,17 @@ import { ApiService } from 'app/services/api.service';
 })
 export class RecipesComponent implements OnInit {
   search: string;
-  constructor(private apifood: ApiService ) { }
+  submitSearch:boolean;
+  listofIngredients = [];
+  constructor(private apifood: ApiService ) { 
+    this.listofIngredients.push('Recette tarte aux pommes');
+    this.submitSearch=false;
+  }
 
   ngOnInit(): void {
   }
   onSubmit(form: NgForm) {
+    this.submitSearch=true;
   }
 
 

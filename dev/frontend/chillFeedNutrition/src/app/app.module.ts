@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+//yaya
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 import { AppRoutingModule } from './app.routing';
@@ -40,6 +43,9 @@ import { RecipesComponent } from './recipes/recipes.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    //yaya
+    MatInputModule,
+    MatAutocompleteModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })

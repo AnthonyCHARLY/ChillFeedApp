@@ -19,6 +19,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
+//yaya
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
 import { ClientCurveComponent } from 'app/clients-components/client-curve/client-curve.component';
@@ -39,6 +42,9 @@ import { RecipesComponent } from 'app/recipes/recipes.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    //yaya
+    
+    MatAutocompleteModule
   ],
   declarations: [
     DashboardComponent,

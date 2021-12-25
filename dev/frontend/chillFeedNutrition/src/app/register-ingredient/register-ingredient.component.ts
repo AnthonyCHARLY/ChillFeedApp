@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IngredientService } from 'app/services/ingredient.service';
 import { ApiService } from 'app/services/api.service';
+//autocomplete
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register-ingredient',
@@ -19,12 +22,26 @@ export class RegisterIngredientComponent implements OnInit {
     carbs     : 0,
     kcal      : 0,
   }
+//autocomplete
+  title = 'autocomplete';
 
-  constructor(private ingredientService : IngredientService , private apifood: ApiService) { 
+  options = ["banan", "chocolate", "apple",""];
+
+  filteredOptions;
+
+
+  formGroup : FormGroup;
+
+  //autocomplete
+  constructor(private ingredientService : IngredientService , private apifood: ApiService, private fb : FormBuilder) { 
     this.submitSearch = false;
   }
 
   ngOnInit(): void {
+    //autocomplete
+    this.initForm();
+    this.getNames();
+    
   }
   onCreate(form: NgForm) {
     this.ingredientData.name = form.value.name;
@@ -49,6 +66,40 @@ export class RegisterIngredientComponent implements OnInit {
   }
   onSave(){
     this.ingredientService.addIngredient(this.ingredientData);
+  }
+
+
+
+  //autocomplete
+  initForm(){
+    this.formGroup = this.fb.group({
+      'name' : ['']
+    })
+    this.formGroup.get('name').valueChanges
+    .pipe(debounceTime(500))
+    .subscribe(response => {
+      console.log('entered data is ', response);
+      if(response && response.length){
+        this.filterData(response);
+      } else {
+        this.filteredOptions = [];
+      }
+      
+    })
+  }
+
+  filterData(enteredData){
+    this.filteredOptions = this.options.filter(item => {
+      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
+    })
+  }
+
+  getNames(){
+   // this.apifood.getDatayaya(this.search).subscribe(response => {
+     // this.options = response;
+      //console.log('ppepepe  :' +  this.options );
+    //})
+    this.options= this.apifood.getDataAutocomplete(this.search);
   }
 
 }

@@ -13,6 +13,7 @@ export class RegisterReceiptsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
   onSubmit(form: NgForm) {
     this.namerIngredient= form.value.search;
