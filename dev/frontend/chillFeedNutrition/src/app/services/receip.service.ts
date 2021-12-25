@@ -34,12 +34,33 @@ export class ReceipService {
 
     }
 
-    getAllIngredientsName(register:any ){
+    getAllReceipsName(register:any ){
       return new Promise((resolve, rejected) => {
           this.httpClient.get('http://localhost:5000/api/receips/getNames')
             .subscribe(
               (rep: any) => {
-                register.options = rep.data;
+                register.receipNamesList = rep.data;
+                resolve(true);
+              },
+              error => {
+                rejected(true);
+                console.log(error);
+    
+              }
+            );
+        })
+    }
+
+
+    FindReceipByName(receipData : any , name : string ){
+      return new Promise((resolve, rejected) => {
+          this.httpClient.get('http://localhost:5000/api/receips/findOneByName/'+name)
+            .subscribe(
+              (rep: any) => {
+                receipData._id   =   rep.data._id;
+                receipData.name   =   rep.data.name;
+                receipData.ingredients   =  rep.data.ingredients ;
+
                 resolve(true);
               },
               error => {

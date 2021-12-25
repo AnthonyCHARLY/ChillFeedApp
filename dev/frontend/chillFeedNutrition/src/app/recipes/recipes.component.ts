@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'app/services/api.service';
+import { ReceipService } from 'app/services/receip.service';
 
 @Component({
   selector: 'app-recipes',
@@ -10,15 +11,25 @@ import { ApiService } from 'app/services/api.service';
 export class RecipesComponent implements OnInit {
   search: string;
   submitSearch:boolean;
-  listofIngredients = [];
-  constructor(private apifood: ApiService ) { 
-    this.listofIngredients.push('Recette tarte aux pommes');
+  receipNamesList = [];
+
+  receipData = {
+    _id   :   '',
+    name   :   '',
+    ingredients : [] 
+  }
+
+
+  constructor(private apifood: ApiService , private receipService: ReceipService ) { 
+    this.receipNamesList.push('Recette tarte aux pommes');
     this.submitSearch=false;
+    
   }
 
   ngOnInit(): void {
+    this.receipService.getAllReceipsName(this);
   }
-  onSubmit(form: NgForm) {
+  onSearch(form: NgForm) {
     this.submitSearch=true;
   }
 

@@ -9,7 +9,7 @@
                         <p class="card-category">Recipes </p>
                     </div>
                     <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <form method="post" (ngSubmit)="onSearch(f)" #f="ngForm">
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
@@ -27,15 +27,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12" *ngIf="submitSearch">
+            <div class="col-lg-6 col-md-12" >
                 <div class="card">
                     <div class="card-header card-header-warning">
                         <h4 class="card-title">Information of recipe</h4>
                         <p class="card-category">Recipe </p>
                     </div>
-                    <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm">
-                          
+                    <div class="card-body">                   
                             <div class="card-content table-responsive table-full-width">
                                 <table class="table">
                                   <thead class="text-warning">
@@ -45,11 +43,10 @@
                                     <th>kcal</th>
                                     <th>carbs</th>
                                   </thead>
-                                  <tbody>
-                                    
-                                     <tr *ngFor = "let column of listofIngredients">
+                                  <tbody>                     
+                                     <tr *ngFor = "let receipName of receipNamesList">
                                             
-                                            <td> {{column}}</td>
+                                            <td> {{receipName}}</td>
                                     </tr>
                                     <thead class="text-warning">
                                         <tr>
@@ -62,7 +59,6 @@
                               </div>
                              
                             <div class="clearfix"></div>
-                        </form>
                     </div>
                 </div>
             </div>

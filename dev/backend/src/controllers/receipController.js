@@ -26,3 +26,30 @@ module.exports.findNames = async function(){
         }
     }
 }
+module.exports.findByName = async function(name){
+    try{
+        let receip = await Receip.findOne({
+            name:name
+        });
+
+        if(!receip){
+            return {
+                success: false,
+                msg:"receip not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: receip,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't search ingredient by name "+err,
+        }
+    }
+}
