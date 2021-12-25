@@ -9,6 +9,7 @@
                             <p class="card-category">add an ingredient to your receip </p>
                         </div>
                         <div class="card-body">
+                            <!--
                             <form method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -23,6 +24,21 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </form>
+                            -->
+                            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
+                                <mat-form-field>
+                                  <input formControlName="name" matInput type="text" [matAutocomplete]="auto" name="name" ngModel required />
+                                  <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                                      {{item}}
+                                    </mat-option>
+                                  </mat-autocomplete>
+                                </mat-form-field>
+                                <div class="col-md-4">
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        [disabled]="f1.invalid">Search</button>
+                                </div>
+                              </form>
                         </div>
                     </div>
                 </div>
@@ -113,6 +129,7 @@
                                 <button mat-raised-button class="btn btn-warning pull-right"
                                     [disabled]="ff.invalid">Create</button>
                             </form>
+                            
                         </div>
                     </div>
                 </div>

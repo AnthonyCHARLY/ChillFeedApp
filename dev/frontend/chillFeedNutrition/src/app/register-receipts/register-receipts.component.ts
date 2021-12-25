@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder,FormGroup, NgForm } from '@angular/forms';
 import { ApiService } from 'app/services/api.service';
 import { IngredientService } from 'app/services/ingredient.service';
+import { ReceipService } from 'app/services/receip.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register-receipts',
@@ -13,10 +15,10 @@ export class RegisterReceiptsComponent implements OnInit {
   search: string;
 
 
-
+  options = ["banan", "chocolate", "apple"];
 
   ingredientData = {
-    id :'',
+    _id :'',
     name      : '',
     protein   : 0,
     lipid     : 0,
@@ -24,15 +26,19 @@ export class RegisterReceiptsComponent implements OnInit {
     kcal      : 0,
   }
 
-  IngredientSelected :any ;
-
   ingredientList = [];
 
-  constructor(private ingredientService : IngredientService , private apifood: ApiService) { 
+  filteredOptions;
+
+  formGroup : FormGroup;
+
+  constructor(private ingredientService : IngredientService , private apifood: ApiService , private receipService : ReceipService ,private fb : FormBuilder) { 
     this.submitSearch = false;
   }
 
   ngOnInit(): void {
+    this.initForm();
+    this.getNames();
   }
   
   onSearch(form: NgForm) {
@@ -45,7 +51,45 @@ export class RegisterReceiptsComponent implements OnInit {
     this.ingredientList.push(this.ingredientData);
   }
   onCreate(form: NgForm){
+    console.log('hello');
 
+    let receipData = {
+      name : form.value.name,
+      ingredients : this.ingredientList
+    }
+    
+    this.receipService.addReceip(receipData);
   }
 
+  //autocomplete
+  initForm(){
+    this.formGroup = this.fb.group({
+      'name' : ['']
+    })
+    this.formGroup.get('name').valueChanges
+    .pipe(debounceTime(500))
+    .subscribe(response => {
+      console.log('entered data is ', response);
+      if(response && response.length){
+        this.filterData(response);
+      } else {
+        this.filteredOptions = [];
+      }
+
+    })
+  }
+
+  filterData(enteredData){
+    this.filteredOptions = this.options.filter(item => {
+      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
+    })
+  }
+
+  getNames(){
+   // this.apifood.getDatayaya(this.search).subscribe(response => {
+     // this.options = response;
+      //console.log('ppepepe  :' +  this.options );
+    //})
+    this.ingredientService.getAllIngredientsName(this);
+    }
 }

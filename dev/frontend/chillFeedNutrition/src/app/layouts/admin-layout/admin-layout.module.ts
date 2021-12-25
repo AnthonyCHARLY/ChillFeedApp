@@ -26,6 +26,7 @@ import { RegisterCustomersComponent } from 'app/register-customers/register-cust
 import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 import { RecipesComponent } from 'app/recipes/recipes.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -39,6 +40,8 @@ import { RecipesComponent } from 'app/recipes/recipes.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+
+    MatAutocompleteModule,
   ],
   declarations: [
     DashboardComponent,

@@ -27,8 +27,6 @@ module.exports.findByName = async function(name){
             name:name
         });
 
-        console.log(ingredient);
-
         if(!ingredient){
             return {
                 success: false,
@@ -47,6 +45,34 @@ module.exports.findByName = async function(name){
         return {
             success: false,
             msg:"can't search ingredient by name "+err,
+        }
+    }
+}
+module.exports.findNames = async function(){
+    try{
+        let ingredients = await Ingredient.find({}).distinct('name');
+        
+
+        console.log(ingredients);
+
+        if(!ingredients){
+            return {
+                success: false,
+                msg:"ingredients not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: ingredients,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't search ingredients name "+err,
         }
     }
 }
