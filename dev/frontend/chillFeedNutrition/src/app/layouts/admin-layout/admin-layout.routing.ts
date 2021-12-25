@@ -75,6 +75,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clients',        component: ClientComponentComponent},
     { path: 'register-customers', component: RegisterCustomersComponent},
     { path: 'register-ingredients', component: RegisterIngredientComponent},
-    { path: 'register-recipe', component: RegisterReceiptsComponent},
+    { path: 'register-recipes', component: RegisterReceiptsComponent},
     { path: 'recipes', component: RecipesComponent}
 ];

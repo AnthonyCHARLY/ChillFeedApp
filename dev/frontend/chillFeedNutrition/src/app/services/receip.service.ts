@@ -34,4 +34,21 @@ export class ReceipService {
 
     }
 
+    getAllIngredientsName(register:any ){
+      return new Promise((resolve, rejected) => {
+          this.httpClient.get('http://localhost:5000/api/receips/getNames')
+            .subscribe(
+              (rep: any) => {
+                register.options = rep.data;
+                resolve(true);
+              },
+              error => {
+                rejected(true);
+                console.log(error);
+    
+              }
+            );
+        })
+    }
+
 }

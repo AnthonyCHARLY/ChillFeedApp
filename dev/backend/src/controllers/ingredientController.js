@@ -51,9 +51,6 @@ module.exports.findByName = async function(name){
 module.exports.findNames = async function(){
     try{
         let ingredients = await Ingredient.find({}).distinct('name');
-        
-
-        console.log(ingredients);
 
         if(!ingredients){
             return {

@@ -69,7 +69,6 @@ export class RegisterReceiptsComponent implements OnInit {
     this.formGroup.get('name').valueChanges
     .pipe(debounceTime(500))
     .subscribe(response => {
-      console.log('entered data is ', response);
       if(response && response.length){
         this.filterData(response);
       } else {
@@ -86,10 +85,6 @@ export class RegisterReceiptsComponent implements OnInit {
   }
 
   getNames(){
-   // this.apifood.getDatayaya(this.search).subscribe(response => {
-     // this.options = response;
-      //console.log('ppepepe  :' +  this.options );
-    //})
     this.ingredientService.getAllIngredientsName(this);
     }
 }

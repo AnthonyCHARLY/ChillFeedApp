@@ -20,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/register-customers', title: 'Register Customer', icon: 'person', class: '', loged: true},
     { path: '/clients', title: 'Client', icon: 'person', class: '', loged: true},
     { path: '/register-ingredients', title: 'Register Ingredients', icon: 'person', class: '', loged: true},
-    { path: '/register-receipts', title: 'Register Recipes', icon: 'person', class: '', loged: true},
+    { path: '/register-recipes', title: 'Register Recipes', icon: 'person', class: '', loged: true},
     { path: '/recipes', title: 'Recipes', icon: 'person', class: '', loged: true}
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },
