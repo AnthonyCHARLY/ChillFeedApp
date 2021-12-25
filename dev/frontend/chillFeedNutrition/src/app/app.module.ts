@@ -33,6 +33,7 @@ import { RegisterCustomersComponent } from './register-customers/register-custom
 import { RegisterIngredientComponent } from './register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from './register-receipts/register-receipts.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { WeekFeedSportPlanningComponent } from './clients-components/week-feed-sport-planning/week-feed-sport-planning.component';
 
 @NgModule({
   imports: [
@@ -54,11 +55,6 @@ import { RecipesComponent } from './recipes/recipes.component';
     AppComponent,
     AdminLayoutComponent
     
-    
-    
-   
-   
-  
 
   ],
   providers: [],

@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="card-header card-header-tabs card-header-primary">
+        <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+                <span class="nav-tabs-title">Week F&S planning :</span>
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                        <a mat-button class="nav-link active" href="#feed" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Feed
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#sport" data-toggle="tab">
+                            <i class="material-icons">accessibility_new</i> Sport
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="card-category" style="text-align: left;">Daily sport and feed moments on week</p>
+    </div>
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="feed">
+                <table class="table">
+
+                    <thead class="text-warning">
+                        <th>Daily moments</th>
+                        <th>Monday</th>
+                        <th>Thuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let checkboxesItem of checkboxesFeed; let i = index">
+                            <th *ngIf="i === 0">BreakFast</th>
+                            <th *ngIf="i === 1">Lunch</th>
+                            <th *ngIf="i === 2">Dinner</th>
+                            <td *ngFor="let item of checkboxesItem">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="" [(ngModel)]="item.isChecked" (change)="changeSelection(item)">
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="sport"> 
+                <table class="table">
+
+                    <thead class="text-warning">
+                        <th>Daily moments</th>
+                        <th>Monday</th>
+                        <th>Thuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let checkboxesItem of checkboxesSport; let i = index">
+                            <th *ngIf="i === 0">Morning</th>
+                            <th *ngIf="i === 1">Afternoon</th>
+                            <th *ngIf="i === 2">Evening</th>
+                            <td *ngFor="let item of checkboxesItem">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="" [(ngModel)]="item.isChecked" (change)="changeSelection(item)">
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <button class="btn btn-primary pull-right" (click)="calculate_needs()">Submit</button>
+        </div>
+    </div>
+</div>>

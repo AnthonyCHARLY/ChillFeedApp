@@ -10,6 +10,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
+import { WeekFeedSportPlanningComponent } from 'app/clients-components/week-feed-sport-planning/week-feed-sport-planning.component';
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
 import { RegisterCustomersComponent } from 'app/register-customers/register-customers.component';
