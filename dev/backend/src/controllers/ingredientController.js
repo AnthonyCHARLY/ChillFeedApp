@@ -21,3 +21,32 @@ module.exports.addIngredient = async function(body){
         };
     }
 }
+module.exports.findByName = async function(name){
+    try{
+        let ingredient = await Ingredient.findOne({
+            name:name
+        });
+
+        console.log(ingredient);
+
+        if(!ingredient){
+            return {
+                success: false,
+                msg:"ingredient not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: ingredient,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't search ingredient by name "+err,
+        }
+    }
+}

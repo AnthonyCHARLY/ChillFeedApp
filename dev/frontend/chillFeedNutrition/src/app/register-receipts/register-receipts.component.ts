@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ApiService } from 'app/services/api.service';
+import { IngredientService } from 'app/services/ingredient.service';
 
 @Component({
   selector: 'app-register-receipts',
@@ -7,27 +9,43 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register-receipts.component.scss']
 })
 export class RegisterReceiptsComponent implements OnInit {
-  namerIngredient: string;
-  //addIngredient: string;
-  addIngredient= [];
-  constructor() { }
+  submitSearch:boolean;
+  search: string;
+
+
+
+
+  ingredientData = {
+    id :'',
+    name      : '',
+    protein   : 0,
+    lipid     : 0,
+    carbs     : 0,
+    kcal      : 0,
+  }
+
+  IngredientSelected :any ;
+
+  ingredientList = [];
+
+  constructor(private ingredientService : IngredientService , private apifood: ApiService) { 
+    this.submitSearch = false;
+  }
 
   ngOnInit(): void {
   }
-  onSubmit(form: NgForm) {
-    this.namerIngredient= form.value.search;
-    
+  
+  onSearch(form: NgForm) {
+    this.search = form.value.name;
+    this.ingredientService.FindIngredientByName(this.ingredientData,this.search).then(()=>this.submitSearch = true);
+
    
   }
-  onSubmit2(form: NgForm){
-    
+  onAdd(){
+    this.ingredientList.push(this.ingredientData);
+  }
+  onCreate(form: NgForm){
 
-    
   }
-  onSubmit3(form: NgForm){
-   this.addIngredient.push(this.namerIngredient);
-    //console.log("sub" +  this.addIngredient );
-  }
-  
 
 }

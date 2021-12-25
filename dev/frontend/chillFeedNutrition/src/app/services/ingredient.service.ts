@@ -28,5 +28,29 @@ export class IngredientService {
           })
 
     }
+    FindIngredientByName(ingredientData : any , name : string ){
+      return new Promise((resolve, rejected) => {
+          this.httpClient.get('http://localhost:5000/api/ingredients/findOneByName/'+name)
+            .subscribe(
+              (rep: any) => {
+                ingredientData._id   =   rep.data.id;
+                ingredientData.name   =   rep.data.name;
+                ingredientData.protein  = rep.data.protein;
+                ingredientData.lipid  =   rep.data.lipid ;
+                ingredientData.carbs   =  rep.data.carbs ;
+                ingredientData.kcal    =  rep.data.kcal ;
+
+                resolve(true);
+              },
+              error => {
+                rejected(true);
+                console.log(error);
+    
+              }
+            );
+        })
+
+  }
+
 
 }
