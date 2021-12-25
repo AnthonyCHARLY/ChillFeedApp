@@ -1,99 +1,124 @@
-
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Search Ingredient</h4>
-                        <p class="card-category">ingredient </p>
-                    </div>
-                    <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm">
-                            <div class="row">
-                                
-                                <div class="col-md-8">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Search" type="text" name="search"  ngModel required >
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="f.invalid">Search</button>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Ingredient</h4>
-                        <p class="card-category">Information of ingredient </p>
-                    </div>
-                    <div class="card-body">
-                        <form method="post" (ngSubmit)="onSubmit3(fff)" #fff="ngForm">
-                       <tr>
-                           <td>Value : {{namerIngredient}} </td>
-                           
-                       </tr>
-                       <tr>
-                            <td>Calories :</td>
-                       </tr>
-                       <tr>
-                         <td>Calories : </td>
-                       </tr>
-                       <tr>
-                           <td>
-                            <button mat-raised-button class="btn btn-danger pull-right" [disabled]="fff.invalid">Add ingredient</button>
-                           </td>
-                       </tr>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-6 col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-tabs card-header-danger">
-                        <div class="nav-tabs-navigation">
-                            <div class="nav-tabs-wrapper">
-                                <span class="nav-tabs-title">Your Recipe:</span>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title">Find an ingredient</h4>
+                            <p class="card-category">add an ingredient to your receip </p>
+                        </div>
+                        <div class="card-body">                          
+                            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
+                                <mat-form-field>
+                                  <input formControlName="name" matInput type="text" [matAutocomplete]="auto" name="name" ngModel required />
+                                  <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                                      {{item}}
+                                    </mat-option>
+                                  </mat-autocomplete>
+                                </mat-form-field>
+                                <div class="col-md-4">
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        [disabled]="f1.invalid">Search</button>
+                                </div>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="submitSearch">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">Ingredient Information</h4>
+                                <p class="card-category">{{this.ingredientData.name}}</p>
+                            </div>
+                            <div class="card-content table-responsive table-full-width">
+                                <table class="table">
+                                    <thead class="text-warning">
+                                        <th>Information</th>
+                                        <th>Value</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>protein</td>
+                                            <td>{{this.ingredientData.protein}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lipid</td>
+                                            <td>{{this.ingredientData.lipid}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>kcal</td>
+                                            <td>{{this.ingredientData.kcal}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>carbs</td>
+                                            <td>{{this.ingredientData.carbs}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col-md-4">
+                                <button mat-raised-button (click)="onAdd()"
+                                    class="btn btn-warning pull-right">Add</button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="profile">
-                                <table class="table">
-                                    <tbody>
-                                        <tr *ngFor = "let column of addIngredient">
-                                            
-                                            <td> {{column}}</td>
-                                            <td class="td-actions text-right">
-                                                <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                    <i class="material-icons">close</i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <form method="post" (ngSubmit)="onSubmit2(ff)" #ff="ngForm">
+                </div>
+
+            </div>
+        
+
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-tabs card-header-warning">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <span class="nav-tabs-title">Your Recipe:</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                            <table class="table">
+                                <tbody>
+                                    <tr *ngFor="let ingredient of ingredientList">
+
+                                        <td> {{ingredient.name}}</td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Edit"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-warning btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form method="post" (ngSubmit)="onCreate(ff)" #ff="ngForm">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required >
+                                        <input matInput placeholder="Name" name="name" ngModel required>
                                     </mat-form-field>
                                 </div>
-                                <button mat-raised-button class="btn btn-danger pull-right" [disabled]="ff.invalid" >Create</button>
-                                </form>
-                            </div>
+                                <button mat-raised-button class="btn btn-warning pull-right"
+                                    [disabled]="ff.invalid">Create</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>

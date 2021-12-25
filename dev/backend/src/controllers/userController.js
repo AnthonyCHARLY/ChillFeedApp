@@ -1,6 +1,6 @@
 const User = require('../models/userModel');
 const Customer = require('../models/customerModel');
-
+const Receip = require('../models/ReceipModel');
 
 module.exports.createUser = async function(body) {
     try {
@@ -94,6 +94,33 @@ module.exports.addCustomer = async function(id,body){
         return {
             success : false,
             message :"can not add customer " + err
+        };
+    }
+}
+
+module.exports.addReceip = async function(id,body){
+    try {
+        console.log(body);
+        let receip = new Receip({
+            ...body
+        });  
+        let user = await User.findById(id);
+        
+        user.receips.push(receip);
+
+
+        receip.save().then(doc =>{}).catch(err =>{});
+        user.save().then(doc =>{}).catch(err =>{});
+
+        return {
+            success: true,
+            data: receip
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not add receip " + err
         };
     }
 }

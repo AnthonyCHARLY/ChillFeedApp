@@ -19,8 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
-//yaya
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
@@ -29,6 +28,7 @@ import { RegisterCustomersComponent } from 'app/register-customers/register-cust
 import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 import { RecipesComponent } from 'app/recipes/recipes.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -42,9 +42,8 @@ import { RecipesComponent } from 'app/recipes/recipes.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    //yaya
-    
-    MatAutocompleteModule
+
+    MatAutocompleteModule,
   ],
   declarations: [
     DashboardComponent,
