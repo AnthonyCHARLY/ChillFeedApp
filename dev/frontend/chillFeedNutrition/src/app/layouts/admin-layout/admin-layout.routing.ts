@@ -10,7 +10,6 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
-import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
 import { RegisterCustomersComponent } from 'app/register-customers/register-customers.component';
 import { Component } from '@angular/core';

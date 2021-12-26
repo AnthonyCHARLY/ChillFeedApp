@@ -1,25 +1,29 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-  
-        
+            <div class="col-md-3 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                         <span class="dropdown-item-text">List Client </span>
-     
-                                 <select class="form-select" (change)="onChange($event.target.value)" size="3" >
-                                    <option class="dropdown-item" *ngFor="let client of listClients" value="{{client}}">{{client}}</option>
-                                 </select>
-                    
+                        <span class="dropdown-item-text">List Client </span>
+                        <select class="form-select" (change)="onChange($event.target.value)" size="3">
+                            <option class="dropdown-item" *ngFor="let client of listClients" value="{{client}}">
+                                {{client}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
-        
-         <div class="col-lg-3 col-md-8 col-sm-6">
-            <app-client-list></app-client-list></div>
-            
-            <app-client-curve></app-client-curve>
+            <div class="col-md-3 col-sm-12">
+                <app-client-list></app-client-list>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <app-client-needs></app-client-needs>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <app-client-curve></app-client-curve>
+            </div>
+        </div>
+        <div class="row">
+            <app-week-feed-sport-planning></app-week-feed-sport-planning>
         </div>
     </div>
 </div>

@@ -19,8 +19,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
-
-
+import { ClientNeedsComponent } from 'app/clients-components/client-needs/client-needs.component';
+import { WeekFeedSportPlanningComponent } from 'app/clients-components/week-feed-sport-planning/week-feed-sport-planning.component';
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
 import { ClientCurveComponent } from 'app/clients-components/client-curve/client-curve.component';
@@ -44,7 +44,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatTooltipModule,
 
     MatAutocompleteModule,
-  ],
+  ], 
   declarations: [
     DashboardComponent,
     TableListComponent,
@@ -62,7 +62,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     RegisterCustomersComponent,
     RegisterIngredientComponent,
     RegisterReceiptsComponent,
-    RecipesComponent
+    RecipesComponent,
+    WeekFeedSportPlanningComponent,
+    ClientNeedsComponent
   ]
 })
 
