@@ -23,7 +23,34 @@ module.exports.getCustomerByEmail = async function(body) {
             
           }
     } catch (err) {
-        return { success: false, message: "cannot find user " + err };
+        return { success: false, message: "cannot find customer " + err };
     }
 
 }
+
+module.exports.findById = async function(id){
+    try{
+        let customer = await Customer.findById(id);
+
+        if(!customer){
+            return {
+                success: false,
+                msg:"customer not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: customer,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't search customer by Id "+err,
+        }
+    }
+}
+

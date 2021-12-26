@@ -19,7 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 
-
+import { ClientNeedsComponent } from 'app/clients-components/client-needs/client-needs.component';
 import { WeekFeedSportPlanningComponent } from 'app/clients-components/week-feed-sport-planning/week-feed-sport-planning.component';
 import { ClientListComponent } from 'app/clients-components/client-list/client-list.component';
 import { ClientComponentComponent } from 'app/client-component/client-component.component';
@@ -63,7 +63,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     RegisterIngredientComponent,
     RegisterReceiptsComponent,
     RecipesComponent,
-    WeekFeedSportPlanningComponent
+    WeekFeedSportPlanningComponent,
+    ClientNeedsComponent
   ]
 })
 

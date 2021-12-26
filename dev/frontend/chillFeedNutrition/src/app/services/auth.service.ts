@@ -20,9 +20,9 @@ export class AuthService {
   }
 
 
-  logOut(){
+  logOut() {
     this.isLoged = false;
-     this.isLogedSubject.next(this.isLoged);
+    this.isLogedSubject.next(this.isLoged);
   }
 
 
@@ -54,7 +54,7 @@ export class AuthService {
             /*
             this.isLoged = true;
             this.isLogedSubject.next(this.isLoged); 
-            */           
+            */
             resolve(true);
           },
           error => {
@@ -66,7 +66,7 @@ export class AuthService {
     })
   }
 
-  getCurentUserId(){
+  getCurentUserId() {
     return this.currentUserId;
   }
 }

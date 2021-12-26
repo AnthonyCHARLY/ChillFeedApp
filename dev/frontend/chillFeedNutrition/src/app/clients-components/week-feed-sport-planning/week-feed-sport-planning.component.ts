@@ -176,7 +176,7 @@ export class WeekFeedSportPlanningComponent implements OnInit {
       isChecked: false
     },
     {
-      id: 'E5',
+      id: 'E5', 
       isChecked: false
     },
     {
@@ -209,5 +209,5 @@ export class WeekFeedSportPlanningComponent implements OnInit {
   calculate_needs(){
      console.log(this.checkboxesFeed, this.checkboxesSport);
   }
-
+ 
 }
