@@ -15,13 +15,13 @@ export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
     { path: '/sign-in', title: 'Sign-In',  icon:'person', class: '', loged: false },
     { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false },
-    { path: '/log-in', title: 'Log-Out', icon:'person', class:'', loged: true },
+    { path: '/log-in', title: 'Log-Out', icon:'cancel', class:'', loged: true },
 
-    { path: '/register-customers', title: 'Register Customer', icon: 'person', class: '', loged: true},
-    { path: '/clients', title: 'Client', icon: 'person', class: '', loged: true},
-    { path: '/register-ingredients', title: 'Register Ingredients', icon: 'person', class: '', loged: true},
-    { path: '/register-recipes', title: 'Register Recipes', icon: 'person', class: '', loged: true},
-    { path: '/recipes', title: 'Recipes', icon: 'person', class: '', loged: true}
+    { path: '/clients', title: 'Customer', icon: 'person', class: '', loged: true},
+    { path: '/register-customers', title: 'Register Customer', icon: 'group_add', class: '', loged: true},
+    { path: '/register-ingredients', title: 'Register Ingredients', icon: 'local_grocery_store', class: '', loged: true},
+    { path: '/register-recipes', title: 'Register Recipes', icon: 'restaurant_menu', class: '', loged: true},
+    { path: '/recipes', title: 'Recipes', icon: 'restaurant_menu', class: '', loged: true}
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },
     //{ path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '', loged: true },
