@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     password  : {type : String}, 
     email     : {type : String},
     accessKey : {type : String},
-    customers : [{type : mongoose.Schema.Types.ObjectId, ref: "User"}],
+    customers : [{type : mongoose.Schema.Types.ObjectId, ref: "Customer"}],
     receips : [{type : mongoose.Schema.Types.ObjectId, ref: "Receip"}]
     
 });

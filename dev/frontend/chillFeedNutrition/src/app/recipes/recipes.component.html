@@ -44,13 +44,18 @@
                                     <th>carbs</th>
                                   </thead>
                                   <tbody>                     
-                                     <tr *ngFor = "let receipName of receipNamesList">
+                                     <tr *ngFor = "let receip of receipsData.receips">
                                             
-                                            <td> {{receipName}}</td>
+                                            <td> {{receip.name}}</td>
+                                            <td> {{receip.protein}}</td>
+                                            <td> {{receip.lipid}}</td>
+                                            <td> {{receip.kcal}}</td>
+                                            <td> {{receip.carbs}}</td>
                                     </tr>
                                     <thead class="text-warning">
                                         <tr>
                                           <td> Total</td>
+                                          <td> {{receipsData.receips.length}}</td>
                                         </tr>
                                 </thead>
                                   </tbody>

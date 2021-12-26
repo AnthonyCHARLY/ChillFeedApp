@@ -127,19 +127,11 @@ module.exports.addReceip = async function(id,body){
 module.exports.getUserReceipsInfo = async function(id){
     try {
 
-        let receips_id = await User.findById(id);
-
-        let user_receips = await Receip.find({_id : receips_id.receips}).select('ingredients -_id').populate('ingredients');
-        //.select('ingredients name');
-
-        //let sum_ingredients_protein = await Ingredient.find(user_receips)
-
-        console.log(user_receips);
+        let user_id = await User.findById(id).select('receips -_id').populate('receips');
        
-
         return {
             success: true,
-            data: receips_id
+            data: user_id
         }
 
     }catch(err){

@@ -17,6 +17,8 @@ export class RegisterReceiptsComponent implements OnInit {
 
   options = ["banan", "chocolate", "apple"];
 
+  
+   
   ingredientData = {
     _id :'',
     name      : '',
@@ -24,7 +26,7 @@ export class RegisterReceiptsComponent implements OnInit {
     lipid     : 0,
     carbs     : 0,
     kcal      : 0,
-  }
+  } 
 
   ingredientList = [];
 
@@ -43,22 +45,41 @@ export class RegisterReceiptsComponent implements OnInit {
   
   onSearch(form: NgForm) {
     this.search = form.value.name;
+
     this.ingredientService.FindIngredientByName(this.ingredientData,this.search).then(()=>this.submitSearch = true);
 
    
   }
   onAdd(){
-    this.ingredientList.push(this.ingredientData);
+    this.ingredientList.push({...this.ingredientData});
   }
   onCreate(form: NgForm){
-    console.log('hello');
+    
+    let sum = {
+      protein : 0 ,
+      lipid : 0 ,
+      carbs : 0 ,
+      kcal : 0 
+    }
 
+   this.ingredientList.forEach(
+     a =>(
+     sum.protein += a.protein,
+     sum.carbs += a.carbs,
+     sum.lipid += a.lipid,
+     sum.kcal += a.kcal
+      )
+    )
     let receipData = {
       name : form.value.name,
-      ingredients : this.ingredientList
+      ingredients : this.ingredientList, 
+      protein : sum.protein,
+      lipid : sum.lipid,
+      carbs : sum.carbs,
+      kcal : sum.kcal,
     }
-    
     this.receipService.addReceip(receipData);
+    
   }
 
   //autocomplete
