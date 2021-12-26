@@ -1,7 +1,7 @@
 const usersRouter = require('express').Router();
 
 
-const { createUser , loginUser , addCustomer ,addReceip } = require('../controllers/userController');
+const { createUser , loginUser , addCustomer ,addReceip, getCustomers } = require('../controllers/userController');
 
 
 usersRouter.route('/addOne').post(async(req,res)=> {
@@ -38,7 +38,14 @@ usersRouter.route('/:id/addReceip').post(async(req,res)=> {
         res.status(404).json(response);
     }
 });
-
+usersRouter.route('/getCustomers/:id').get(async(req,res)=> {
+    let response = await getCustomers(req.params.id);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
 
 
 

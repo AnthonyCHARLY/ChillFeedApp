@@ -26,6 +26,7 @@ module.exports.findNames = async function(){
         }
     }
 }
+
 module.exports.findByName = async function(name){
     try{
         let receip = await Receip.findOne({

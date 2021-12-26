@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'app/services/auth.service';
+import { CustomerService } from 'app/services/customer.service';
 
 @Component({
   selector: 'app-client-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientListComponent implements OnInit {
 
-  constructor() { }
+  customers: any[];
 
-  ngOnInit(): void {
+  customersId :string[];
+
+  constructor(private authService: AuthService, private customerService: CustomerService ) {
+    this.customers = [];     
   }
+
+  ngOnInit(): void {   
+    this.customerService.getUserCustomers(this.authService.getCurentUserId(),this).then(() => {
+      this.customersId.forEach(customerId => {
+        this.customerService.getCustomer(customerId,this);
+      });
+    });
+  }
+
+  onChange(value){
+    this.customerService.updateCurrentCustomer(value);
+  }
+
 
 }

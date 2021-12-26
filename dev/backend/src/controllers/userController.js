@@ -98,6 +98,26 @@ module.exports.addCustomer = async function(id,body){
     }
 }
 
+module.exports.getCustomers = async function(id){
+    try {
+
+        let user = await User.findById(id);
+        
+        let customers = user.customers;
+
+        return {
+            success: true,
+            data: customers
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not find user's customers " + err
+        };
+    }
+}
+
 module.exports.addReceip = async function(id,body){
     try {
         console.log(body);

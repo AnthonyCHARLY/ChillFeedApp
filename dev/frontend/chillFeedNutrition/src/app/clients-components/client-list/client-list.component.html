@@ -1,41 +1,11 @@
-
 <div class="card">
-    <div class="card-header card-header-danger" >
-      <h4 class="card-title">Information</h4>
-      <p class="card-category">Objectif</p>
-    </div>
-    <div class="card-content table-responsive table-full-width">
-      <table class="table">
-        <thead class="text-danger">
-          <th>Information</th>
-          <th>Value</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Weight</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>Height</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>Pmorphology</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>activity</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>time of activity</td>
-            <td>20</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="card-header card-header-success">
+    <h4>Clients</h4>
+    <p class="card-category">Clients list</p>
   </div>
+  <div class="card-body"></div>
+  <select class="form-select" (change)="onChange($event.target.value)" size="3">
+    <option class="dropdown-item" *ngFor="let client of customers" value="{{client._id}}">
+      {{client.email}}</option>
+  </select>
+</div>

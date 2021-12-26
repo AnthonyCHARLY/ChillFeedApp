@@ -7,21 +7,10 @@ import{ ApiService} from '../services/api.service'
   styleUrls: ['./client-component.component.scss']
 })
 export class ClientComponentComponent implements OnInit {
-  listClients :[string];
-  clientSelected: string;
 
-  constructor(private apifood: ApiService) { 
-   this.listClients=[''];    
-  }
+  constructor(private apifood: ApiService) { }
 
   ngOnInit(): void {
-    this.listClients.push('yassir');
-    this.listClients.push('hassan le fou');
-  }
-
-  onChange(value){
-    this.clientSelected =value;
-    console.log(this.clientSelected);
   }
 
 }
