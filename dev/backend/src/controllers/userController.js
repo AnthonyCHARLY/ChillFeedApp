@@ -144,3 +144,19 @@ module.exports.addReceip = async function(id,body){
         };
     }
 }
+module.exports.getUserReceipsInfo = async function(id){
+    try {
+
+        let user_id = await User.findById(id).select('receips -_id').populate('receips');
+       
+        return {
+            success: true,
+            data: user_id
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not get user Receips info " + err
+        };
+    }}
