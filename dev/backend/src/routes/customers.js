@@ -11,7 +11,7 @@ customerRouter.route('/findOne').post(async(req,res)=> {
     }
 });
 
-customerRouter.route('/findById').get(async(req,res)=> {
+customerRouter.route('/findById/:id').get(async(req,res)=> {
     let response = await findById(req.params.id);
     if (response.success == true) {
         res.status(200).json(response);

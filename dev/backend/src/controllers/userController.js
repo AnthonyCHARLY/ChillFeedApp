@@ -98,6 +98,26 @@ module.exports.addCustomer = async function(id,body){
     }
 }
 
+module.exports.getCustomers = async function(id){
+    try {
+
+        let user = await User.findById(id);
+        
+        let customers = user.customers;
+
+        return {
+            success: true,
+            data: customers
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not find user's customers " + err
+        };
+    }
+}
+
 module.exports.addReceip = async function(id,body){
     try {
         console.log(body);
@@ -124,3 +144,19 @@ module.exports.addReceip = async function(id,body){
         };
     }
 }
+module.exports.getUserReceipsInfo = async function(id){
+    try {
+
+        let user_id = await User.findById(id).select('receips -_id').populate('receips');
+       
+        return {
+            success: true,
+            data: user_id
+        }
+
+    }catch(err){
+        return {
+            success : false,
+            message :"can not get user Receips info " + err
+        };
+    }}

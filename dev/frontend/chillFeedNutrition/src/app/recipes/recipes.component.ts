@@ -3,34 +3,35 @@ import { NgForm } from '@angular/forms';
 import { ApiService } from 'app/services/api.service';
 import { ReceipService } from 'app/services/receip.service';
 
+
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
-  search: string;
-  submitSearch:boolean;
+
   receipNamesList = [];
 
-  receipData = {
-    _id   :   '',
-    name   :   '',
-    ingredients : [] 
+  receipsData = {
+    receips : [],
   }
 
 
   constructor(private apifood: ApiService , private receipService: ReceipService ) { 
-    this.receipNamesList.push('Recette tarte aux pommes');
-    this.submitSearch=false;
+   
+    
     
   }
 
   ngOnInit(): void {
-    this.receipService.getAllReceipsName(this);
+    this.receipService.getAllUserReceipsInfo(this).then(()=>console.log(this.receipsData));
+    
+    
+    
   }
   onSearch(form: NgForm) {
-    this.submitSearch=true;
+
   }
 
 

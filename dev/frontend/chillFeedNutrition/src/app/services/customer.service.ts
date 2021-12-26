@@ -21,7 +21,6 @@ export class CustomerService {
   }
 
   addCustomer(customerData: object) {
-
     return new Promise((resolve, rejected) => {
       let currentUserId = this.authService.getCurentUserId();
       console.log(currentUserId);
@@ -40,13 +39,40 @@ export class CustomerService {
     })
   }
 
-  updateCurrentCustomer(newCustomerId: string) {
-    this.httpClient.get('http://localhost:5000/api/customers/findById' + newCustomerId)
+  updateCurrentCustomer(customerId: string) {
+    this.httpClient.get('http://localhost:5000/api/customers/findById/' + customerId)
       .subscribe(
         (data: any) => {
-          console.log(data);
-          this.currentCustomer = data;
+          this.currentCustomer = data.data;
           this.currentCustomerSubject.next(this.currentCustomer);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  getUserCustomers(userId: string, fen: any) {
+    return new Promise((resolve, rejected) => {
+      this.httpClient.get('http://localhost:5000/api/users/getCustomers/' + userId)
+        .subscribe(
+          (data: any) => {
+            fen.customersId = data.data;
+            resolve(true);
+          },
+          error => {
+            console.log(error);
+            rejected(true);
+          }
+        );
+    });
+  }
+
+  getCustomer(customerId: string, fen: any) {
+    this.httpClient.get('http://localhost:5000/api/customers/findById/' + customerId)
+      .subscribe(
+        (data: any) => {
+          fen.customers.push(data.data);
         },
         error => {
           console.log(error);

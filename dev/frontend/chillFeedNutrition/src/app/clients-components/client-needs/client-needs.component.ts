@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientNeedsComponent implements OnInit {
 
-  
+  private currentClient: any;
 
   constructor() { }
 

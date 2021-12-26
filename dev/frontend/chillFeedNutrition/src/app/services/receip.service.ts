@@ -50,6 +50,23 @@ export class ReceipService {
             );
         })
     }
+    getAllUserReceipsInfo(register:any ){
+      return new Promise((resolve, rejected) => {
+        let currentUserId = this.authService.getCurentUserId();
+          this.httpClient.get('http://localhost:5000/api/users/'+currentUserId+'/receipsInfos')
+            .subscribe(
+              (rep: any) => {              
+                register.receipsData = rep.data;
+                resolve(true);
+              },
+              error => {
+                rejected(true);
+                console.log(error);
+    
+              }
+            );
+        })
+    }
 
 
     FindReceipByName(receipData : any , name : string ){
