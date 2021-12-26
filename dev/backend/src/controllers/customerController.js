@@ -7,7 +7,7 @@ module.exports.getCustomerByEmail = async function(body) {
         let customer = await Customer.findOne({
             email: body.email
         });
-
+ 
         if (!customer) {
 
             return {
