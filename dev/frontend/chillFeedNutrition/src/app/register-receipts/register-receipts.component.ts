@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'app/services/api.service';
 import { IngredientService } from 'app/services/ingredient.service';
 import { ReceipService } from 'app/services/receip.service';
@@ -34,7 +35,7 @@ export class RegisterReceiptsComponent implements OnInit {
 
   formGroup : FormGroup;
 
-  constructor(private ingredientService : IngredientService , private apifood: ApiService , private receipService : ReceipService ,private fb : FormBuilder) { 
+  constructor(private router : Router , private ingredientService : IngredientService , private apifood: ApiService , private receipService : ReceipService ,private fb : FormBuilder) { 
     this.submitSearch = false;
   }
 
@@ -78,7 +79,7 @@ export class RegisterReceiptsComponent implements OnInit {
       carbs : sum.carbs,
       kcal : sum.kcal,
     }
-    this.receipService.addReceip(receipData);
+    this.receipService.addReceip(receipData).then(()=> this.router.navigate(['/recipes']) );
     
   }
 
@@ -107,5 +108,17 @@ export class RegisterReceiptsComponent implements OnInit {
 
   getNames(){
     this.ingredientService.getAllIngredientsName(this);
-    }
+  }
+  onRemoveIngredient(ingredient){  
+            this.ingredientList.forEach((element,index)=>{
+              if(element._id==ingredient._id){
+                console.log(element);           
+                this.ingredientList.splice(index,1);
+              }
+           });
+           
+  }
+
+
+
 }

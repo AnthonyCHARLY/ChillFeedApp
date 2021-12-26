@@ -86,16 +86,10 @@
                         <div class="tab-pane active" id="profile">
                             <table class="table">
                                 <tbody>
-                                    <tr *ngFor="let ingredient of this.ingredientList">
-
+                                    <tr *ngFor="let ingredient of this.ingredientList" >
                                         <td> {{ingredient.name}}</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
+                                            <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveIngredient(ingredient)" *ngIf="ingredient"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-warning btn-link btn-sm btn-just-icon">
                                                 <i class="material-icons">close</i>
