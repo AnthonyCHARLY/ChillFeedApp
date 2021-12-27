@@ -25,5 +25,31 @@ app.use('/api',routes);
 
 
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'chill feed  REST API',
+            description: "A REST API built with Express and MongoDB.",
+            version: '0.1',
+        },
+        servers: [
+            {
+                url: 'http://localhost:5000/api',
+                description: 'Development server',
+            },
+        ],
+    },
+    apis: ["./src/routes/*.js"],
+}
+
+const openapiSpecification = swaggerJsDoc(options);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
+
+
 
 app.listen(process.env.PORT || 5000, () => console.log('Up and running 🚀'));

@@ -3,7 +3,19 @@ const usersRouter = require('express').Router();
 
 const { createUser , loginUser , addCustomer ,addReceip, getCustomers,getUserReceipsInfo } = require('../controllers/userController');
 
-
+/**
+ * @openapi
+ * 
+ * /users/addOne:
+ *   post:
+ *     tags: [User]
+ *     description: add a user
+ *     responses:
+ *       '200':
+ *         description: Returns the user
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/addOne').post(async(req,res)=> {
     let response = await createUser(req.body);
     if (response.success == true) {
@@ -12,7 +24,19 @@ usersRouter.route('/addOne').post(async(req,res)=> {
         res.status(404).json(response);
     }
 });
-
+/**
+ * @openapi
+ * 
+ * /users/log-in:
+ *   post:
+ *     tags: [User]
+ *     description: user's log in 
+ *     responses:
+ *       '200':
+ *         description: Returns the current user
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/log-in').post(async(req,res)=> {
     let response = await loginUser(req.body.email,req.body.password);
     if (response.success == true) {
@@ -22,6 +46,19 @@ usersRouter.route('/log-in').post(async(req,res)=> {
     }
        
 })
+/**
+ * @openapi
+ * 
+ * /users/id/addCustomer:
+ *   post:
+ *     tags: [User]
+ *     description: add a user
+ *     responses:
+ *       '200':
+ *         description: Returns the user
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/:id/addCustomer').post(async(req,res)=> {
     let response = await addCustomer(req.params.id,req.body);
     if (response.success == true) {
@@ -30,6 +67,19 @@ usersRouter.route('/:id/addCustomer').post(async(req,res)=> {
         res.status(404).json(response);
     }
 });
+/**
+ * @openapi
+ * 
+ * /users/id/addReceip:
+ *   post:
+ *     tags: [User]
+ *     description: add a receip to user
+ *     responses:
+ *       '200':
+ *         description: Returns the receip
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/:id/addReceip').post(async(req,res)=> {
     let response = await addReceip(req.params.id,req.body);
     if (response.success == true) {
@@ -38,6 +88,19 @@ usersRouter.route('/:id/addReceip').post(async(req,res)=> {
         res.status(404).json(response);
     }
 });
+/**
+ * @openapi
+ * 
+ * /users/getCustomers/id:
+ *   get:
+ *     tags: [User]
+ *     description: get user customers
+ *     responses:
+ *       '200':
+ *         description: Returns the customers
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/getCustomers/:id').get(async(req,res)=> {
     let response = await getCustomers(req.params.id);
     if (response.success == true) {
@@ -46,7 +109,19 @@ usersRouter.route('/getCustomers/:id').get(async(req,res)=> {
         res.status(404).json(response);
     }
 });
-
+/**
+ * @openapi
+ * 
+ * /users/id/receipsInfos:
+ *   get:
+ *     tags: [User]
+ *     description: get user receips info
+ *     responses:
+ *       '200':
+ *         description: Returns receips info
+ *       '404':
+ *         description: error 
+ */
 usersRouter.route('/:id/receipsInfos').get(async(req,res)=> {
     let response = await getUserReceipsInfo(req.params.id);
     if (response.success == true) {
