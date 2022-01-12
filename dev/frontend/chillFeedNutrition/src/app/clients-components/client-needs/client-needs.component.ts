@@ -27,7 +27,7 @@ export class ClientNeedsComponent implements OnInit {
 
   private morphoIndices = [
     {
-      morph: "Ectomorph",
+      morph: "Ectomorphic",
       prot: 40,
       lip: 35,
       carb: 25

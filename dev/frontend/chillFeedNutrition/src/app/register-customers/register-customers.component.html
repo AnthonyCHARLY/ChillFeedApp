@@ -12,24 +12,25 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" >
+                                        <input matInput placeholder="Name">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-8">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Email address" name="email" type="email" ngModel email required  >
+                                        <input matInput placeholder="Email address" name="email" type="email" ngModel
+                                            email required>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Age" name="age" type="number" ngModel >
+                                        <input matInput placeholder="Age" name="age" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Weight" name="weight" type="number" ngModel >
+                                        <input matInput placeholder="Weight" name="weight" type="number" ngModel>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -42,15 +43,45 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Morphology" name="morphology" type="text" class="form-control" ngModel >
-                                    </mat-form-field>
+                                    <!--<mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Morphotype" name="morphology" type="text"
+                                            class="form-control" ngModel disabled>
+                                    </mat-form-field>-->
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="morphRadio"
+                                                value="Ectomorph" checked>
+                                            Ectomorphic
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="morphRadio"
+                                                value="Mesomorphic">
+                                            Mesomorphic
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="morphRadio"
+                                                value="Endomorphic">
+                                            Endomorphic
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Activity" name="activity" type="text" ngModel >
+                                        <input matInput placeholder="Activity" name="activity" type="text" ngModel>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -68,7 +99,8 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="f.invalid">Create</button>
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        [disabled]="f.invalid">Create</button>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
