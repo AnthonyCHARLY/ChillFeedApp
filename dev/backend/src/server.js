@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}) );
 
-app.use(express.static(process.cwd()+"../../frontend/chillFeedNutrition/dist/"));
+app.use(express.static(process.cwd()+"/src/static"));
 
 
 app.use((req, res, next) => {
