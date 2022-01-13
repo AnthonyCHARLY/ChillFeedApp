@@ -54,3 +54,19 @@ module.exports.findByName = async function(name){
         }
     }
 }
+
+module.exports.removeReceip= async function(id) {
+    try {
+
+        await Receip.deleteOne(id)
+            .then(doc => {})
+            .catch(err => {});
+
+        return {
+            success: true,
+        }
+
+    } catch (err) {
+        return { success: false, message: "cannot remove receip " + err };
+    }
+}

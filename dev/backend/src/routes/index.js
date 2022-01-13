@@ -12,7 +12,15 @@ router.use('/ingredients',ingredientsRouter);
 router.use('/receips',receipsRouter);
 
 
-
+/**
+ * @openapi
+ * /:
+ *   get:
+ *     description: accueil
+ *     responses:
+ *       '200':
+ *         description: Returns a hello world 
+ */
 router.get('/',function (req, res, next){ 
     res.status(200).json({
         status: 'API is working',
