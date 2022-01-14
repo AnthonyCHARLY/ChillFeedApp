@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Router,CanActivate ,ActivatedRouteSnapshot,RouterStateSnapshot} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthService {
+export class AuthService implements CanActivate{
 
   private currentUserId: string;
 
@@ -14,9 +15,21 @@ export class AuthService {
   public isLogedSubject: Subject<boolean>;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private router: Router,private httpClient: HttpClient) {
     this.isLoged = false;
     this.isLogedSubject = new Subject<boolean>();
+  }
+
+
+  canActivate(route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+
+    if (!this.isLoged)  {
+      alert('You are not connected');
+      this.router.navigate(['log-in']);
+      return false;
+    } 
+    return true;
   }
 
 

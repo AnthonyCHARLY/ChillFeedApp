@@ -89,7 +89,7 @@ export class RegisterReceiptsComponent implements OnInit {
       'name' : ['']
     })
     this.formGroup.get('name').valueChanges
-    .pipe(debounceTime(500))
+    .pipe(debounceTime(200))
     .subscribe(response => {
       if(response && response.length){
         this.filterData(response);

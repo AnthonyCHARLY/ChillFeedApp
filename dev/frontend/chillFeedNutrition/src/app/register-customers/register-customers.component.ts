@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CustomerService } from 'app/services/customer.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-customers',
@@ -20,11 +20,20 @@ export class RegisterCustomersComponent implements OnInit {
     activity  : "",
     goal      : "",
     weightGoal: 0
-}
+  }
+  morphotype : String[];
+  activitys : String [];
+  sexe : String [];
 
-  constructor(private customerService : CustomerService) { }
+
+  constructor(private router: Router,private customerService : CustomerService) {
+    
+   }
 
   ngOnInit(): void {
+    this.morphotype = ['Endomorphic', 'Mesomorphic','Ectomorph'];
+    this.activitys = ['Base','Leisur','Reinforcement','Endurance','Strength','Marathon','Hight Level'];
+    this.sexe = ['girl','boy'];
   }
   onSubmit(form: NgForm) {
     this.customerData.email = form.value.email;
@@ -39,6 +48,9 @@ export class RegisterCustomersComponent implements OnInit {
    
 
     this.customerService.addCustomer(this.customerData);
+    console.log(form.value.sexe + "  sexe");
+    
+    this.router.navigate(['log-in']);
   }
 
 }

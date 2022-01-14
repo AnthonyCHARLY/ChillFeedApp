@@ -13,6 +13,8 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
+import {MatListModule} from '@angular/material/list';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -36,6 +38,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { WeekFeedSportPlanningComponent } from './clients-components/week-feed-sport-planning/week-feed-sport-planning.component';
 import { ClientNeedsComponent } from './clients-components/client-needs/client-needs.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule, 
@@ -46,6 +49,7 @@ import { ClientNeedsComponent } from './clients-components/client-needs/client-n
     RouterModule,
     AppRoutingModule,
     //yaya
+    MatListModule,
     MatInputModule,
     MatAutocompleteModule,
     AgmCoreModule.forRoot({
@@ -55,6 +59,7 @@ import { ClientNeedsComponent } from './clients-components/client-needs/client-n
   declarations: [
     AppComponent,
     AdminLayoutComponent
+    
 
   ],
   providers: [],
