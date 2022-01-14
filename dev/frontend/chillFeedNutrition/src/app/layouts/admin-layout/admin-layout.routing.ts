@@ -16,6 +16,8 @@ import { Component } from '@angular/core';
 import { RegisterIngredientComponent } from 'app/register-ingredient/register-ingredient.component';
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 import { RecipesComponent } from 'app/recipes/recipes.component';
+import { AuthService } from 'app/services/auth.service';
+import { HomePageComponent } from 'app/home-page/home-page.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -71,9 +73,10 @@ export const AdminLayoutRoutes: Routes = [
 
     { path: 'sign-in',   component: UserProfileComponent },
     { path: 'log-in',         component: LogInComponent},
-    { path: 'clients',        component: ClientComponentComponent},
-    { path: 'register-customers', component: RegisterCustomersComponent},
-    { path: 'register-ingredients', component: RegisterIngredientComponent},
-    { path: 'register-recipes', component: RegisterReceiptsComponent},
-    { path: 'recipes', component: RecipesComponent}
+    { path: 'home',         component: HomePageComponent},
+    { path: 'clients',  canActivate: [AuthService],      component: ClientComponentComponent},
+    { path: 'register-customers' , canActivate: [AuthService], component: RegisterCustomersComponent},
+    { path: 'register-ingredients' , canActivate: [AuthService], component: RegisterIngredientComponent},
+    { path: 'register-recipes', canActivate: [AuthService], component: RegisterReceiptsComponent},
+    { path: 'recipes', canActivate: [AuthService], component: RecipesComponent}
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/services/auth.service';
 import { CustomerService } from 'app/services/customer.service';
 
+
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
@@ -27,6 +28,7 @@ export class ClientListComponent implements OnInit {
 
   onChange(value){
     this.customerService.updateCurrentCustomer(value);
+    
   }
 
 

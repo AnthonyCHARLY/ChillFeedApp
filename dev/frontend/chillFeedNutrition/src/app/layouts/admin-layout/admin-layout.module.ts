@@ -29,6 +29,8 @@ import { RegisterIngredientComponent } from 'app/register-ingredient/register-in
 import { RegisterReceiptsComponent } from 'app/register-receipts/register-receipts.component';
 import { RecipesComponent } from 'app/recipes/recipes.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatListModule} from '@angular/material/list';
+import { HomePageComponent } from 'app/home-page/home-page.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-
+    MatListModule,
     MatAutocompleteModule,
   ], 
   declarations: [
@@ -64,7 +66,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     RegisterReceiptsComponent,
     RecipesComponent,
     WeekFeedSportPlanningComponent,
-    ClientNeedsComponent
+    ClientNeedsComponent,
+    HomePageComponent
   ]
 })
 

@@ -1,0 +1,60 @@
+.card{
+    width: 300px;
+    height: 330 px;
+   
+    border-radius: 20px;
+    padding: 25px 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 20px 25px;
+    background-position: 0 100px;
+    background-size: cover;
+    transition: transform 0.5s;
+}
+a{
+    height: 50 px;
+    width: 200px;
+    padding: 25px 35px;
+    //margin: 20px 25px;
+    
+}
+.card1{
+    background-image: url(/assets/img/background-fruits.jpg);
+}
+.card2{
+    background-image: url(/assets/img/background-fruits.jpg);
+}
+.card:hover{
+    transform: translateY(-10px);
+}
+
+h2{
+    font-family: OCR A Std, monospace;
+}
+h5{
+    font-family: OCR A Std, monospace;
+}
+.row{
+    display: flex;
+    //width: 300px;
+    height: 90%;
+    align-items: center;
+}
+.col{
+    font-size: 20px;
+}
+.container{
+    width: 90%;
+    height: 90vh;
+    //padding-left: 8%;
+    //padding-right: 8%;
+    box-sizing: border-box;
+}
+
+.active {
+    background-color: white;
+}
+
+p{
+    font-style: italic;
+}
