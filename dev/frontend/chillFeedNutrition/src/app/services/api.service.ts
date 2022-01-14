@@ -27,7 +27,7 @@ export class ApiService {
     return this.httpClient.get(url);
   }
   //autocomplete
-  getDataAutocomplete(search: string){
+  getDataAutocomplete(search : string){
   //  return this.httpClient.get('https://api.nutritionix.com/v1_1/search/' + search +'?results=0:10&fields=*&appId=c7387d2b&appKey=3b0ac5384668b3cabe3287e1c6cb3c76')
     //  .pipe(
       //  map((response:[]) => response.map(item => item['name']))
