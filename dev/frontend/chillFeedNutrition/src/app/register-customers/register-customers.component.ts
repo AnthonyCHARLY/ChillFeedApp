@@ -19,11 +19,16 @@ export class RegisterCustomersComponent implements OnInit {
     morphology: "", 
     activity  : "",
     goal      : "",
+    sexe      : "",
+    weightCurve: [],
+    dateCurve: [],
     weightGoal: 0
   }
   morphotype : String[];
   activitys : String [];
   sexe : String [];
+
+  
 
 
   constructor(private router: Router,private customerService : CustomerService) {
@@ -45,12 +50,17 @@ export class RegisterCustomersComponent implements OnInit {
     this.customerData.activity = form.value.activity;
     this.customerData.goal = form.value.goal;
     this.customerData.weightGoal = form.value.weightGoal;
-   
+    
+    this.customerData.weightCurve.push(form.value.weight);
+    console.log("tableau de poids " + this.customerData.weightCurve);
+
+    
+    this.customerData.sexe = form.value.sexe;
 
     this.customerService.addCustomer(this.customerData);
     console.log(form.value.sexe + "  sexe");
     
-    this.router.navigate(['log-in']);
+    this.router.navigate(['clients']);
   }
 
 }

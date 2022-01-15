@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as Chartist from 'chartist';
+import { CustomerService } from 'app/services/customer.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -10,51 +12,83 @@ import * as Chartist from 'chartist';
 })
 export class ClientCurveComponent implements OnInit {
 
-  dataDailySalesChart : any;
+  dataDailySalesChart= {
+    labels: [],
+    series: [ 
+        [] ]
+    
+  };
+ // dataDailySalesChart : any;
   evolutionWeight : any;
   curveObjectif : boolean;
   lastWeight : any;
   newWeight : any;
   valueWeight : number ;
 
-  constructor() {
-         this.curveObjectif = false;
-        this.dataDailySalesChart= {
-          labels: ['Week ', 'Week', 'Week','Week'],
-          series: [ 
-              [12, 17, 7],[20,20,20,20] ]
-          
-        };
-        this.curveObjectif=true;
-        this.valueWeight= 0;
+
+  currentClient: any;
+  currentClientSubscription: Subscription;
+ 
+
+  constructor(private customerServie: CustomerService) {
+    this.currentClientSubscription = this.customerServie.currentCustomerSubject.subscribe(
+      (customer: any) => {
+        this.currentClient = customer;
+
+        this.dataDailySalesChart.series[0]=[];
+        this.dataDailySalesChart.labels = [];
+        this.ngCurveEvoluation();
+       
+        let ElementCurve=0;
+        let lenghtCurve =this.currentClient.weightCurve.length;
+       
+
+        this.currentClient.weightCurve.forEach(element => {
+
+          this.dataDailySalesChart.series[0].push(element);
+          if(ElementCurve<lenghtCurve)
+            this.dataDailySalesChart.labels.push('Week');
+            ElementCurve = ElementCurve +1;
+           
+        });
+
+        this.ngCurveEvoluation();
+    });
+    
+
+    this.curveObjectif = false;
+        
+    this.curveObjectif=true;
+    this.valueWeight= 0;
+        
    }
   
 
   
   ngOnInit(): void {
+    
     this.ngCurveEvoluation();
   }
 
   onSubmit(form: NgForm){
     
     this.dataDailySalesChart.labels.push('Week');
-    console.log("lables "+ this.dataDailySalesChart.labels);
+   
     this.dataDailySalesChart.series[0].push(form.value.weight);
-    console.log("lables "+ this.dataDailySalesChart.series );
+   
     this.lastWeight = this.dataDailySalesChart.series[0].slice(-1)[0];
     this.newWeight = this.dataDailySalesChart.series[0].slice(-2)[0];
 
     if(this.lastWeight> this.newWeight){
-      console.log("trueee");
+      
       this.curveObjectif = true;
       this.valueWeight= (this.lastWeight - this.newWeight);
     }
     else{
-      console.log("false");
       this.curveObjectif = false;
       this.valueWeight= (this.newWeight - this.lastWeight);
     }
-    
+
     
     this.ngOnInit();
   }
@@ -66,8 +100,8 @@ export class ClientCurveComponent implements OnInit {
           lineSmooth: Chartist.Interpolation.cardinal({
               tension: 0
           }),
-          low: 0,
-          high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          low: 45,
+          high: 100, 
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 

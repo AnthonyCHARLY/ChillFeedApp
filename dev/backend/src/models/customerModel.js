@@ -10,7 +10,9 @@ const customerSchema = new mongoose.Schema({
     morphology: {type : String}, 
     activity  : {type : String},
     goal      : {type : String},
-    weightGoal: {type : String},
+    weightGoal : {type : String},
+    sexe      : {type : String},
+    weightCurve : [{type : Number}],
     receips : [{type : mongoose.Schema.Types.ObjectId, ref: "Receip"}]
     
 });
