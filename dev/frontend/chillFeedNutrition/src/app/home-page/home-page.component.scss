@@ -40,6 +40,18 @@ h5{
     height: 90%;
     align-items: center;
 }
+.borde{
+    padding: 25px 35px;
+    //background-color: rgba(172, 168, 168, 0.87);
+    border-style: inset;
+    border-radius: 20px;
+    //border-color: transparent;
+    display: flex;
+    //width: 300px;
+    height: 70%;
+    align-items: center;
+
+}
 .col{
     font-size: 20px;
 }

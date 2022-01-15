@@ -36,10 +36,10 @@ export class ClientCurveComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    console.log("curve yass " + form.value.weight);
+    
     this.dataDailySalesChart.labels.push('Week');
     console.log("lables "+ this.dataDailySalesChart.labels);
-    this.dataDailySalesChart.series[0].push(30);
+    this.dataDailySalesChart.series[0].push(form.value.weight);
     console.log("lables "+ this.dataDailySalesChart.series );
     this.lastWeight = this.dataDailySalesChart.series[0].slice(-1)[0];
     this.newWeight = this.dataDailySalesChart.series[0].slice(-2)[0];

@@ -25,7 +25,7 @@ export class RegisterIngredientComponent implements OnInit {
 //autocomplete
   title = 'autocomplete';
 
-  options = ["banan", "chocolate", "apple",""];
+  options = ["banan", "chocolate", "apple"];
 
   filteredOptions;
 

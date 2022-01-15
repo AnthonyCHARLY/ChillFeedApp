@@ -1,21 +1,23 @@
 <div class="container">
-<div class="row">
-    <div class="col">
-    <h2>ChillFeedNutrition </h2>
-    <p class="italic">you support him in the follow-up of your client.</p>
-    <p class="italic">To follow them in their advancement and
-        advise on their diet</p>
+    <div class="row">
+        <div class="borde">
+        <div class="col">
+        <h2>ChillFeedNutrition </h2>
+        <p class="italic">you support him in the follow-up of your client.</p>
+        <p class="italic">To follow them in their advancement and
+            advise on their diet</p>
+        </div>
+        <div class="col">
+            <div class="card card1">
+                <a class="ab" routerLink="/sign-in" routerLinkActive="active"><h5>Sign In</h5></a> 
+            </div>
+        
+            <div class="card card2">
+                <a routerLink="/log-in" routerLinkActive="active"><h5>Log In</h5></a>
+            </div>
+        </div>    
+        
+        <router-outlet></router-outlet>
     </div>
-    <div class="col">
-        <div class="card card1">
-            <a class="ab" routerLink="/sign-in" routerLinkActive="active"><h5>Sign In</h5></a> 
-        </div>
-      
-        <div class="card card2">
-            <a routerLink="/log-in" routerLinkActive="active"><h5>Log In</h5></a>
-        </div>
-    </div>    
-    
-    <router-outlet></router-outlet>
-</div>
+    </div>
 </div>
