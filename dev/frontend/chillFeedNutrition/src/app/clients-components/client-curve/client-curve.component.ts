@@ -35,26 +35,21 @@ export class ClientCurveComponent implements OnInit {
       (customer: any) => {
         this.currentClient = customer;
 
-        this.dataDailySalesChart.series[0].splice(0,this.currentClient.weightCurve.length);
-        this.dataDailySalesChart.labels.splice(0,this.currentClient.weightCurve.length);
+        this.dataDailySalesChart.series[0]=[];
+        this.dataDailySalesChart.labels = [];
         this.ngCurveEvoluation();
-        console.log(" après supression : " + this.dataDailySalesChart.series[0]);
-
+       
         let ElementCurve=0;
         let lenghtCurve =this.currentClient.weightCurve.length;
-        console.log(" taille tableau " +lenghtCurve);
-        console.log(" taille tableau " + this.currentClient.weightCurve);
+       
 
         this.currentClient.weightCurve.forEach(element => {
 
-          console.log("cure icic ===>" + element);
           this.dataDailySalesChart.series[0].push(element);
-          console.log("cure icic ===>" + this.dataDailySalesChart.series[0]);
           if(ElementCurve<lenghtCurve)
             this.dataDailySalesChart.labels.push('Week');
-            
             ElementCurve = ElementCurve +1;
-            console.log("cure icic ===>" + this.dataDailySalesChart.labels);
+           
         });
 
         this.ngCurveEvoluation();
@@ -78,19 +73,18 @@ export class ClientCurveComponent implements OnInit {
   onSubmit(form: NgForm){
     
     this.dataDailySalesChart.labels.push('Week');
-    console.log("lables "+ this.dataDailySalesChart.labels);
+   
     this.dataDailySalesChart.series[0].push(form.value.weight);
-    console.log("lables "+ this.dataDailySalesChart.series );
+   
     this.lastWeight = this.dataDailySalesChart.series[0].slice(-1)[0];
     this.newWeight = this.dataDailySalesChart.series[0].slice(-2)[0];
 
     if(this.lastWeight> this.newWeight){
-      console.log("trueee");
+      
       this.curveObjectif = true;
       this.valueWeight= (this.lastWeight - this.newWeight);
     }
     else{
-      console.log("false");
       this.curveObjectif = false;
       this.valueWeight= (this.newWeight - this.lastWeight);
     }
@@ -107,7 +101,7 @@ export class ClientCurveComponent implements OnInit {
               tension: 0
           }),
           low: 45,
-          high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          high: 100, 
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 
