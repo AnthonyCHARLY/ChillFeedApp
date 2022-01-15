@@ -25,6 +25,7 @@ export class AuthService implements CanActivate{
     state: RouterStateSnapshot): boolean {
 
     if (!this.isLoged)  {
+      
       alert('You are not connected');
       this.router.navigate(['log-in']);
       return false;
