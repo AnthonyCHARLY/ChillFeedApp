@@ -74,8 +74,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'sign-in',   component: UserProfileComponent },
     { path: 'log-in',         component: LogInComponent},
     { path: 'home',         component: HomePageComponent},
-    { path: 'clients',       component: ClientComponentComponent},
-    { path: 'register-customers' ,  component: RegisterCustomersComponent},
+    { path: 'clients', canActivate: [AuthService], component: ClientComponentComponent},
+    { path: 'register-customers' , canActivate: [AuthService], component: RegisterCustomersComponent},
     { path: 'register-ingredients' , canActivate: [AuthService], component: RegisterIngredientComponent},
     { path: 'register-recipes', canActivate: [AuthService], component: RegisterReceiptsComponent},
     { path: 'recipes', canActivate: [AuthService], component: RecipesComponent}
