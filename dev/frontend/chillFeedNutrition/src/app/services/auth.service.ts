@@ -26,7 +26,7 @@ export class AuthService implements CanActivate{
 
     if (!this.isLoged)  {
       alert('You are not connected');
-      this.router.navigate(['log-in']);
+      this.router.navigate(['']);
       return false;
     } 
     return true;

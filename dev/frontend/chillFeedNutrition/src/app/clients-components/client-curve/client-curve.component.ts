@@ -20,9 +20,9 @@ export class ClientCurveComponent implements OnInit {
   constructor() {
          this.curveObjectif = false;
         this.dataDailySalesChart= {
-          labels: ['Week ', 'Week', 'Week'],
+          labels: ['Week ', 'Week', 'Week','Week'],
           series: [ 
-              [12, 17, 7] ]
+              [12, 17, 7],[20,20,20,20] ]
           
         };
         this.curveObjectif=true;

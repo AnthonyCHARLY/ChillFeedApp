@@ -147,8 +147,6 @@ export class ClientNeedsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("bonjour");
-    console.log(this.currentClient);
   }
 
 }

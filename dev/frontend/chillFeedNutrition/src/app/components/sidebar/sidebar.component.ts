@@ -13,14 +13,14 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '', loged: true },
+    { path: '/home', title: 'Home', icon:'person', class: '', loged: false},
     { path: '/sign-in', title: 'Sign-In',  icon:'person', class: '', loged: false },
     { path: '/log-in', title: 'Log-In', icon:'person', class:'', loged: false },
-    { path: '/log-in', title: 'Log-Out', icon:'cancel', class:'', loged: true },
-
+    { path: '/home', title: 'Log-Out', icon:'cancel', class:'active-pro', loged: true },
     { path: '/clients', title: 'Customer', icon: 'person', class: '', loged: true},
-    { path: '/register-customers', title: 'Register Customer', icon: 'group_add', class: '', loged: true},
+    { path: '/register-customers', title: 'Register Customer', icon: 'group_add', class: '', loged: null},
     { path: '/register-ingredients', title: 'Register Ingredients', icon: 'local_grocery_store', class: '', loged: true},
-    { path: '/register-recipes', title: 'Register Recipes', icon: 'restaurant_menu', class: '', loged: true},
+    { path: '/register-recipes', title: 'Register Recipes', icon: 'restaurant_menu', class: '', loged: null},
     { path: '/recipes', title: 'Recipes', icon: 'restaurant_menu', class: '', loged: true}
     //{ path: '/table-list', title: 'Table List',  icon:'content_paste', class: '', loged: true },
     //{ path: '/typography', title: 'Typography',  icon:'library_books', class: '', loged: true },

@@ -23,12 +23,13 @@ export class ClientListComponent implements OnInit {
       this.customersId.forEach(customerId => {
         this.customerService.getCustomer(customerId,this);
       });
+      this.customerService.updateCurrentCustomer(this.customersId[0]);
+      
     });
   }
 
   onChange(value){
     this.customerService.updateCurrentCustomer(value);
-    
   }
 
 
