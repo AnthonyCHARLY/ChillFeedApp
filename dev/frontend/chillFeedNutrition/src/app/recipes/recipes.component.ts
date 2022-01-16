@@ -33,6 +33,11 @@ export class RecipesComponent implements OnInit {
   onSearch(form: NgForm) {
 
   }
+  onRemoveReceip(receip:any){
+    console.log(receip);
+   this.receipService.removeReceip(receip._id,this).then(()=>console.log(this.receipsData));
+    
+  }
 
 
 }

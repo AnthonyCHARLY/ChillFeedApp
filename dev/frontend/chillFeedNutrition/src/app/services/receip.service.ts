@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { identity } from 'rxjs';
 import { AuthService } from './auth.service';
 
 
@@ -88,5 +89,25 @@ export class ReceipService {
             );
         })
     }
+    
+    removeReceip(receipId : any ,register :any ){
+      return new Promise((resolve, rejected) => {
+        let currentUserId = this.authService.getCurentUserId();
+          this.httpClient.delete('http://localhost:5000/api/users/'+currentUserId+'/deleteOne/'+receipId)
+            .subscribe(
+              (rep: any) => {     
+                console.log("rep.data => "+rep.data)         
+                register.receipsData = rep.data;         
+                resolve(true);
+              },
+              error => {
+                rejected(true);
+                console.log(error);
+    
+              }
+            );
+        })
+    }
+    
 
 }
