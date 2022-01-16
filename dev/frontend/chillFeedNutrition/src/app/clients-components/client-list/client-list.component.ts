@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectionListChange } from '@angular/material/list';
 import { AuthService } from 'app/services/auth.service';
 import { CustomerService } from 'app/services/customer.service';
 
@@ -28,8 +29,14 @@ export class ClientListComponent implements OnInit {
     });
   }
 
-  onChange(value){
-    this.customerService.updateCurrentCustomer(value);
+  onChange(value: MatSelectionListChange){
+    this.customerService.updateCurrentCustomer(value.option.value);
+  }
+
+  onRemoveClient(client:any){
+    console.log(client);
+    this.customerService.removeClient(client._id,this)
+
   }
 
 
