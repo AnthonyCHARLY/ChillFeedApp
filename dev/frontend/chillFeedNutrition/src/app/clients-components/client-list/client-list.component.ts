@@ -33,5 +33,11 @@ export class ClientListComponent implements OnInit {
     this.customerService.updateCurrentCustomer(value.option.value);
   }
 
+  onRemoveClient(client:any){
+    console.log(client);
+    this.customerService.removeClient(client._id,this)
+
+  }
+
 
 }

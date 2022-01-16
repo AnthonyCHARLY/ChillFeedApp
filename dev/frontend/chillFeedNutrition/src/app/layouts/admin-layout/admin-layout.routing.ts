@@ -18,6 +18,7 @@ import { RegisterReceiptsComponent } from 'app/register-receipts/register-receip
 import { RecipesComponent } from 'app/recipes/recipes.component';
 import { AuthService } from 'app/services/auth.service';
 import { HomePageComponent } from 'app/home-page/home-page.component';
+import { WeekNeedsPlanningComponent } from 'app/clients-components/week-needs-planning/week-needs-planning.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -71,6 +72,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
 
+    { path: 'weekn',   component: WeekNeedsPlanningComponent },
     { path: 'sign-in',   component: UserProfileComponent },
     { path: 'log-in',         component: LogInComponent}, 
     { path: 'home',         component: HomePageComponent},

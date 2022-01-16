@@ -1,7 +1,7 @@
 const usersRouter = require('express').Router();
 
 
-const { createUser, loginUser, addCustomer, addReceip, addIngredient, getIngredients, getCustomers, getUserReceipsInfo } = require('../controllers/userController');
+const { createUser, loginUser, addCustomer, addReceip, addIngredient, getIngredients, getCustomers, getUserReceipsInfo, removeReceip , removeClient } = require('../controllers/userController');
 
 /**
  * @openapi
@@ -172,7 +172,49 @@ usersRouter.route('/:id/receipsInfos').get(async(req,res)=> {
         res.status(404).json(response);
     }
 });
+/**
+ * @openapi
+ * 
+ * /users/id/deleteReceip/idReceip:
+ *   delete:
+ *     tags: [Customer] 
+ *     description: delete a user receip found by his id 
+ *     responses:
+ *       '200':
+ *         description: 
+ *       '404':
+ *         description: error 
+ */
+ usersRouter.route('/:id/deleteReceip/:idR').delete(async(req, res) => {
+    let response = await removeReceip(req.params.id,req.params.idR);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
 
+/**
+ * @openapi
+ * 
+ * /users/id/deleteClient/idClinet:
+ *   delete:
+ *     tags: [Customer] 
+ *     description: delete a user Client found by his id 
+ *     responses:
+ *       '200':
+ *         description: 
+ *       '404':
+ *         description: error 
+ */
+ usersRouter.route('/:id/deleteClient/:idC').delete(async(req, res) => {
+    let response = await removeClient(req.params.id,req.params.idC);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
 
 
 module.exports = usersRouter
