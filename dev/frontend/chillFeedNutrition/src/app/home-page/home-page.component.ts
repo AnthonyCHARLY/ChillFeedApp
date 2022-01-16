@@ -10,6 +10,12 @@ export class HomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.isMobileMenu();
   }
-
+  isMobileMenu() {
+    if ($(window).width() > 991) {
+        return false;
+    }
+    return true;
+};
 }

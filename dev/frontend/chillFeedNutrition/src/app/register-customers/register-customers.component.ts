@@ -52,8 +52,7 @@ export class RegisterCustomersComponent implements OnInit {
     this.customerData.weightGoal = form.value.weightGoal;
     
     this.customerData.weightCurve.push(form.value.weight);
-    console.log("tableau de poids " + this.customerData.weightCurve);
-
+  
     
     this.customerData.sexe = form.value.sexe;
 

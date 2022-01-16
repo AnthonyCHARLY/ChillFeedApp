@@ -70,3 +70,35 @@ h5{
 p{
     font-style: italic;
 }
+
+@media all and (min-width: 375px) and (max-width: 812px){
+    h2{
+        font-size: 90%;
+        font-family: OCR A Std, monospace;
+    }
+    p{
+        font-size: 80%;
+        font-style: italic;
+    }
+    .col{
+        font-size: 100%;
+    }
+    .borde{
+        padding: 25px 35px;
+        //background-color: rgba(172, 168, 168, 0.87);
+        border-style: inset;
+        border-radius: 20px;
+        //border-color: transparent;
+        display: flex;
+        width: 90%;
+        height: 82%;
+        align-items: center;
+    
+    }
+    
+}
+@media all and (min-width: 812px) and (max-width: 2000px){
+    .col{
+        font-size: 20px;
+    }
+}
