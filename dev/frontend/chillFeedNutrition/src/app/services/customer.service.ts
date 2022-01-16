@@ -72,12 +72,31 @@ export class CustomerService {
     this.httpClient.get('http://localhost:5000/api/customers/findById/' + customerId)
       .subscribe(
         (data: any) => {
+          console.log(data.data);
           fen.customers.push(data.data);
         },
         error => {
           console.log(error);
         }
       );
+  }
+  removeClient(clientId : any ,instance :any ){
+    return new Promise((resolve, rejected) => {
+      let currentUserId = this.authService.getCurentUserId();
+        this.httpClient.delete('http://localhost:5000/api/users/'+currentUserId+'/deleteClient/'+clientId)
+          .subscribe(
+            (rep: any) => {     
+              console.log("rep.data => ",rep.data.customers)         
+              instance.customers= rep.data.customers;       
+              resolve(true);
+            },
+            error => {
+              rejected(true);
+              console.log(error);
+  
+            }
+          );
+      })
   }
 
 }
