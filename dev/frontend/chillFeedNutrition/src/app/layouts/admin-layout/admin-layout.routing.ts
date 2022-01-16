@@ -72,11 +72,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
 
     { path: 'sign-in',   component: UserProfileComponent },
-    { path: 'log-in',         component: LogInComponent},
+    { path: 'log-in',         component: LogInComponent}, 
     { path: 'home',         component: HomePageComponent},
     { path: 'clients', canActivate: [AuthService], component: ClientComponentComponent},
     { path: 'register-customers' , canActivate: [AuthService], component: RegisterCustomersComponent},
-    { path: 'register-ingredients' , canActivate: [AuthService], component: RegisterIngredientComponent},
+    { path: 'register-ingredients' , component: RegisterIngredientComponent},
     { path: 'register-recipes', canActivate: [AuthService], component: RegisterReceiptsComponent},
     { path: 'recipes', canActivate: [AuthService], component: RecipesComponent}
 ];

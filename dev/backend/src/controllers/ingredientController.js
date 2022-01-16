@@ -1,6 +1,30 @@
 const Ingredient = require('../models/IngredientModel')
 
+module.exports.findById = async function(id){
+    try{
+        let ingredient = await Ingredient.findById(id);
 
+        if(!ingredient){
+            return {
+                success: false,
+                msg:"ingredient not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: ingredient,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't found ingredient by Id "+err,
+        }
+    }
+}
 
 module.exports.addIngredient = async function(body){
     try {

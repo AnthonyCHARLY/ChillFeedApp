@@ -5,6 +5,7 @@ import { ApiService } from 'app/services/api.service';
 //autocomplete
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { MatSelectionListChange } from '@angular/material/list';
 
 @Component({
   selector: 'app-register-ingredient',
@@ -12,94 +13,83 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./register-ingredient.component.scss']
 })
 export class RegisterIngredientComponent implements OnInit {
-  submitSearch:boolean;
+  submitSearch: boolean;
   search: string;
 
   ingredientData = {
-    name      : '',
-    protein   : 0,
-    lipid     : 0,
-    carbs     : 0,
-    kcal      : 0,
-  }
-//autocomplete
-  title = 'autocomplete';
+    name: '',
+    protein: 0,
+    lipid: 0,
+    carbs: 0,
+    kcal: 0,
+    unit: '',
+    quantity: 0
 
-  options = ["banan", "chocolate", "apple"];
-
-  filteredOptions;
-
-
-  formGroup : FormGroup;
-
-  //autocomplete
-  constructor(private ingredientService : IngredientService , private apifood: ApiService, private fb : FormBuilder) { 
-    this.submitSearch = false;
   }
 
-  ngOnInit(): void {
-    //autocomplete
-    this.initForm();
-    this.getNames();
-    
-  }
-  onCreate(form: NgForm) {
-    this.ingredientData.name = form.value.name;
-    this.ingredientData.protein = form.value.protein;
-    this.ingredientData.lipid = form.value.lipid;
-    this.ingredientData.kcal = form.value.kcal;
-    this.ingredientData.carbs = form.value.carbs;
 
-    this.ingredientService.addIngredient(this.ingredientData);
+  searchedIngredients: any[];
+  myIngredients: any[];
 
+  constructor(private ingredientService: IngredientService, private apifood: ApiService, private fb: FormBuilder) {
+    this.searchedIngredients = [];
+    this.myIngredients = [];
+  }
 
-    
-   
+  ngOnInit(): void {    
+    this.ingredientService.getAllUserIngredients(this);
   }
-  onSearch(form: NgForm) {
-    this.search = form.value.name;
-    this.apifood.getData(this.search,this.ingredientData).then(()=>{
-      console.log('ouiii')
-    });
-    this.submitSearch = true;
-   
+
+  onKeySeaerchedIngredients(event: any) {
+    let val = event.target.value;
+    this.apifood.getData(val, this);
   }
-  onSave(){
+
+  onChangeSearchedIngredient(value: MatSelectionListChange) {
+    this.ingredientData.name = this.searchedIngredients[value.option.value].name;
+    this.ingredientData.protein = this.searchedIngredients[value.option.value].protein;
+    this.ingredientData.lipid = this.searchedIngredients[value.option.value].lipid;
+    this.ingredientData.kcal = this.searchedIngredients[value.option.value].kcal;
+    this.ingredientData.carbs = this.searchedIngredients[value.option.value].carbs;
+    this.ingredientData.unit = this.searchedIngredients[value.option.value].unit;
+    this.ingredientData.quantity = this.searchedIngredients[value.option.value].quantity;
+  }
+
+  onCreate() {
+
     this.ingredientService.addIngredient(this.ingredientData);
   }
 
-
-
-  //autocomplete
-  initForm(){
-    this.formGroup = this.fb.group({
-      'name' : ['']
-    })
-    this.formGroup.get('name').valueChanges
-    .pipe(debounceTime(500))
-    .subscribe(response => {
-      console.log('entered data is ', response);
-      if(response && response.length){
-        this.filterData(response);
-      } else {
-        this.filteredOptions = [];
-      }
-      
-    })
+  onKeyName(event: any){
+    this.ingredientData.name = event.target.value;
   }
 
-  filterData(enteredData){
-    this.filteredOptions = this.options.filter(item => {
-      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
-    })
+  onKeyProt(event: any){
+    this.ingredientData.protein = event.target.value;
   }
 
-  getNames(){
-   // this.apifood.getDatayaya(this.search).subscribe(response => {
-     // this.options = response;
-      //console.log('ppepepe  :' +  this.options );
-    //})
-    this.options= this.apifood.getDataAutocomplete(this.search);
+  onKeyLipid(event: any){
+    this.ingredientData.lipid = event.target.value;
+  }
+
+  onKeyKcal(event: any){
+    this.ingredientData.kcal = event.target.value;
+  }
+
+  onKeyCarbs(event: any){
+    this.ingredientData.carbs = event.target.value;
+  }
+
+  onKeyUnit(event: any){
+    this.ingredientData.unit = event.target.value;
+  }
+
+  onKeyQty(event: any){
+    this.ingredientData.quantity = event.target.value;
+  }
+
+  onSave() {
+    this.ingredientService.addIngredient(this.ingredientData);
   }
 
 }

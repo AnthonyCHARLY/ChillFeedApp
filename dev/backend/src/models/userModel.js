@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     email     : {type : String},
     accessKey : {type : String},
     customers : [{type : mongoose.Schema.Types.ObjectId, ref: "Customer"}],
-    receips : [{type : mongoose.Schema.Types.ObjectId, ref: "Receip"}]
+    receips : [{type : mongoose.Schema.Types.ObjectId, ref: "Receip"}],
+    ingredients : [{type : mongoose.Schema.Types.ObjectId, ref: "Ingredient"}]
     
 });
 

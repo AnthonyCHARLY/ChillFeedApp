@@ -65,10 +65,6 @@ export class AuthService implements CanActivate{
       this.httpClient.post(' http://localhost:5000/api/users/addOne', userData)
         .subscribe(
           (data: any) => {
-            /*
-            this.isLoged = true;
-            this.isLogedSubject.next(this.isLoged); 
-            */
             resolve(true);
           },
           error => {

@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const Customer = require('../models/customerModel');
 const Receip = require('../models/ReceipModel');
+const Ingredient = require('../models/IngredientModel');
 
 module.exports.createUser = async function(body) {
     try {
@@ -18,7 +19,7 @@ module.exports.createUser = async function(body) {
         user = new User({
             ...body
         });
-
+ 
         user.save()
             .then(doc => {})
             .catch(err => {});
@@ -118,6 +119,59 @@ module.exports.getCustomers = async function(id){
     }
 }
 
+module.exports.addIngredient = async function(id,body){
+    try{
+        console.log(body);
+        let ingredient  = new Ingredient({
+            ...body
+        });
+        let user = await User.findById(id);
+
+        user.ingredients.push(ingredient);
+
+        ingredient.save().then(doc =>{}).catch(err =>{});
+        user.save().then(doc =>{}).catch(err =>{});
+
+        return {
+            success: true,
+            data: ingredient
+        };
+    }catch(err){
+        return { 
+            success: false,
+            message: "can not add ingredient" + err
+        };
+    }
+}
+
+module.exports.getIngredients = async function(id){
+    try{
+        let user = await User.findById(id); 
+
+        let ingredients = user.ingredients;
+
+        if(!ingredients){
+            return {
+                success: false,
+                msg:"ingredients not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: ingredients,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't search ingredients name "+err,
+        }
+    }
+}
+
 module.exports.addReceip = async function(id,body){
     try {
         console.log(body);
@@ -135,7 +189,7 @@ module.exports.addReceip = async function(id,body){
         return {
             success: true,
             data: receip
-        }
+        };
 
     }catch(err){
         return {

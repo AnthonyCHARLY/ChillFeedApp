@@ -1,7 +1,28 @@
 const ingredientsRouter =require('express').Router();
 
 
-const { addIngredient , findByName, findNames} = require('../controllers/ingredientController');
+const { addIngredient , findByName, findNames, findById} = require('../controllers/ingredientController');
+/**
+ * @openapi
+ * 
+ * /ingredients/findById/id:
+ *   get:
+ *     tags: [Ingredient]
+ *     description: find an ingredient by his id
+ *     responses:
+ *       '200':
+ *         description: Returns the ingredient
+ *       '404':
+ *         description: error 
+ */
+ ingredientsRouter.route('/findById/:id').get(async(req,res)=> {
+    let response = await findById(req.params.id);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
 /**
  * @openapi
  * /ingredients/addOne:

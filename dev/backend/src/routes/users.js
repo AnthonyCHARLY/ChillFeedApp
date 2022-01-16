@@ -1,7 +1,7 @@
 const usersRouter = require('express').Router();
 
 
-const { createUser , loginUser , addCustomer ,addReceip, getCustomers,getUserReceipsInfo } = require('../controllers/userController');
+const { createUser, loginUser, addCustomer, addReceip, addIngredient, getIngredients, getCustomers, getUserReceipsInfo } = require('../controllers/userController');
 
 /**
  * @openapi
@@ -82,6 +82,48 @@ usersRouter.route('/:id/addCustomer').post(async(req,res)=> {
  */
 usersRouter.route('/:id/addReceip').post(async(req,res)=> {
     let response = await addReceip(req.params.id,req.body);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
+/**
+ * @openapi
+ * 
+ * /users/id/addIngredient:
+ *   post:
+ *     tags: [User]
+ *     description: add an ingredient to user
+ *     responses:
+ *       '200':
+ *         description: Returns the ingredient
+ *       '404':
+ *         description: error 
+ */
+usersRouter.route('/:id/addIngredient').post(async(req,res)=> {
+    let response = await addIngredient(req.params.id,req.body);
+    if(response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+})
+/**
+ * @openapi
+ * 
+ * /users/getIngredients/id:
+ *   get:
+ *     tags: [User]
+ *     description: get user ingredients
+ *     responses:
+ *       '200':
+ *         description: Returns user ingredients
+ *       '404':
+ *         description: error 
+ */
+ usersRouter.route('/getIngredients/:id').get(async(req,res)=> {
+    let response = await getIngredients(req.params.id);
     if (response.success == true) {
         res.status(200).json(response);
     } else {

@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
   userData = {
       email    : "",
       password : "",
-      
+      userName : ""
   }
 
   constructor(private router : Router,private authService : AuthService) { }
@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
 
     this.userData.email = form.value.email;
     this.userData.password = form.value.password;
+    this.userData.userName = form.value.name;
 
     this.authService.signIn(this.userData).then(
       () => {
