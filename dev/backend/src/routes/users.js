@@ -1,7 +1,7 @@
 const usersRouter = require('express').Router();
 
 
-const { createUser , loginUser , addCustomer ,addReceip, getCustomers,getUserReceipsInfo } = require('../controllers/userController');
+const { createUser , loginUser , addCustomer ,addReceip, getCustomers, getUserReceipsInfo, removeReceip } = require('../controllers/userController');
 
 /**
  * @openapi
@@ -130,7 +130,27 @@ usersRouter.route('/:id/receipsInfos').get(async(req,res)=> {
         res.status(404).json(response);
     }
 });
-
+/**
+ * @openapi
+ * 
+ * /receips/id/deleteOne/idReceip:
+ *   delete:
+ *     tags: [Customer] 
+ *     description: delete a user receip found by his id 
+ *     responses:
+ *       '200':
+ *         description: 
+ *       '404':
+ *         description: error 
+ */
+ usersRouter.route('/:id/deleteOne/:idR').delete(async(req, res) => {
+    let response = await removeReceip(req.params.id,req.params.idR);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
 
 
 module.exports = usersRouter

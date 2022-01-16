@@ -33,6 +33,7 @@ export class LogInComponent implements OnInit {
 
     this.authService.logIn(this.userData).then(
       () => {
+        
         this.router.navigate(['clients']);
       },
       () =>{

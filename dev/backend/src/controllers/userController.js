@@ -147,11 +147,11 @@ module.exports.addReceip = async function(id,body){
 module.exports.getUserReceipsInfo = async function(id){
     try {
 
-        let user_id = await User.findById(id).select('receips -_id').populate('receips');
+        let receips = await User.findById(id).select('receips -_id').populate('receips');
        
         return {
             success: true,
-            data: user_id
+            data: receips
         }
 
     }catch(err){
@@ -160,3 +160,40 @@ module.exports.getUserReceipsInfo = async function(id){
             message :"can not get user Receips info " + err
         };
     }}
+
+    module.exports.removeReceip= async function(id,idR) {
+        try {
+
+            let user = await User.findOne({_id:id });
+
+            if (!user) {
+                return {
+                    success: false,
+                    msg: ' not found'
+                }
+            }
+
+            let index = user.receips.indexOf(idR);
+            if (index !== -1) {
+                user.receips.splice(index, 1);
+            } else {
+                return { success: false, message: "cannot find receip index in user" + err };
+            }
+            
+            
+            await Receip.deleteOne({_id : idR}).then(doc => {}).catch(err => {});
+            
+            user.save().then(doc => { }).catch(err => { });    
+            
+            let receips = await User.findById(id).select('receips -_id').populate('receips');
+            
+            return {
+                success: true,
+                data : receips
+            }
+            
+    
+        } catch (err) {
+            return { success: false, message: "cannot remove receip " + err };
+        }
+    }    

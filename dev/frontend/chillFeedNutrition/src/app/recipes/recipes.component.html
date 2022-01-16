@@ -52,6 +52,14 @@
                                             <td> {{receip.lipid}}</td>
                                             <td> {{receip.kcal}}</td>
                                             <td> {{receip.carbs}}</td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveReceip(receip)"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-warning btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                            
                                     </tr>
                                     <thead class="text-warning">
                                         <tr>
