@@ -32,7 +32,7 @@ export class IngredientService {
 
   }
 
-  FindIngredientByName(ingredientData: any, name: string) {
+  findIngredientByName(ingredientData: any, name: string) {
     return new Promise((resolve, rejected) => {
       this.httpClient.get('http://localhost:5000/api/ingredients/findOneByName/' + name)
         .subscribe(
@@ -55,14 +55,31 @@ export class IngredientService {
     })
   }
 
+  getIngredientById(id: string, fen: any) {
+    console.log('bonjour');
+    
+    console.log(id);
+    
+    this.httpClient.get('http://localhost:5000/api/ingredients/findById/' + id)
+      .subscribe(
+        (data: any) => {
+          console.log(data.data);
+          fen.myIngredients.push(data.data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
   getAllUserIngredients(fen: any){
     return new Promise((resolve, rejected) => {
       let currentUserId = this.authService.getCurentUserId();
-      this.httpClient.get('http://localhost:5000/api/users/getIngredients' + currentUserId)
+      this.httpClient.get('http://localhost:5000/api/users/getIngredients/' + currentUserId)
         .subscribe(
           (rep: any) => {
             
-            fen.myIngredients = rep.data;
+            fen.myIngredientsId = rep.data;
             resolve(true);
           },
           error => {

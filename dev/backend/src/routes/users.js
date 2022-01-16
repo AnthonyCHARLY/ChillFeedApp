@@ -14,7 +14,7 @@ const { createUser, loginUser, addCustomer, addReceip, addIngredient, getIngredi
  *       '200':
  *         description: Returns the user
  *       '404':
- *         description: error 
+ *         description: error
  */
 usersRouter.route('/addOne').post(async(req,res)=> {
     let response = await createUser(req.body);

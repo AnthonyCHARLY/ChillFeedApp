@@ -29,15 +29,26 @@ export class RegisterIngredientComponent implements OnInit {
 
 
   searchedIngredients: any[];
+  myIngredientsId: string[];
   myIngredients: any[];
 
   constructor(private ingredientService: IngredientService, private apifood: ApiService, private fb: FormBuilder) {
     this.searchedIngredients = [];
+    this.myIngredientsId = [];
     this.myIngredients = [];
   }
 
   ngOnInit(): void {    
-    this.ingredientService.getAllUserIngredients(this);
+    this.ingredientService.getAllUserIngredients(this).then(
+      () => {
+        this.myIngredients = [];
+        this.myIngredientsId.forEach(id => {
+          console.log(id);
+          
+          this.ingredientService.getIngredientById(id,this);
+        });
+      }
+    );
   }
 
   onKeySeaerchedIngredients(event: any) {
@@ -53,11 +64,29 @@ export class RegisterIngredientComponent implements OnInit {
     this.ingredientData.carbs = this.searchedIngredients[value.option.value].carbs;
     this.ingredientData.unit = this.searchedIngredients[value.option.value].unit;
     this.ingredientData.quantity = this.searchedIngredients[value.option.value].quantity;
+    console.log(this.myIngredients);
+    
+  }
+
+  onChangeMyIngredients(value: MatSelectionListChange){
+    
   }
 
   onCreate() {
-
-    this.ingredientService.addIngredient(this.ingredientData);
+    this.ingredientService.addIngredient(this.ingredientData).then(
+      () => {
+        this.ingredientService.getAllUserIngredients(this).then(
+          () => {
+            this.myIngredients = [];
+            this.myIngredientsId.forEach(id => {
+              console.log(id);
+              
+              this.ingredientService.getIngredientById(id,this);
+            });
+          }
+        );
+      }
+    );
   }
 
   onKeyName(event: any){

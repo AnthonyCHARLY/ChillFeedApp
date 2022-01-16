@@ -47,7 +47,7 @@ export class RegisterReceiptsComponent implements OnInit {
   onSearch(form: NgForm) {
     this.search = form.value.name;
 
-    this.ingredientService.FindIngredientByName(this.ingredientData,this.search).then(()=>this.submitSearch = true);
+    this.ingredientService.findIngredientByName(this.ingredientData,this.search).then(()=>this.submitSearch = true);
 
    
   }

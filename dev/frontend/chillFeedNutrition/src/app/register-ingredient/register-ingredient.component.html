@@ -12,6 +12,32 @@
 
                     <div class="card-header card-header-danger">
 
+                        <h4>My ingredients</h4>
+                        <p class="card-category">Personal ingredients data list</p>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <mat-selection-list [multiple]="false" (selectionChange)="onChangeMyIngredients($event)">
+                            <mat-list-option class="list-single-selection-example"
+                                *ngFor="let ingredient of myIngredients; let i = index" value="{{i}}">
+                                {{ingredient.name}}
+                            </mat-list-option>
+                        </mat-selection-list>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+
+                <div class="card">
+
+                    <div class="card-header card-header-danger">
+
                         <h4 class="card-title">New ingredient</h4>
                         <p class="card-category">Add ingredient in your database</p>
 
@@ -93,32 +119,6 @@
                     </div>
 
                 </div>
-
-                <div class="card">
-
-                    <div class="card-header card-header-danger">
-
-                        <h4>My ingredients</h4>
-                        <p class="card-category">Personal ingredients data list</p>
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <mat-selection-list [multiple]="false" (selectionChange)="onChangeSearchedIngredient($event)">
-                            <mat-list-option class="list-single-selection-example"
-                                *ngFor="let ingredient of myIngredients; let i = index" value="{{i}}">
-                                {{ingredient}}
-                            </mat-list-option>
-                        </mat-selection-list>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-sm-12">
 
                 <div class="card">
 
