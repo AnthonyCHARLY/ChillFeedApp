@@ -1,0 +1,207 @@
+<div class="card">
+    <div class="card-header card-header-tabs card-header-primary">
+        <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+                <span class="nav-tabs-title">Week Needs planning :</span>
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                        <a mat-button class="nav-link active" href="#Monday" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Monday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Thuesday" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Thuesday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Wednesday " data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Wednesday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Thursday " data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Thursday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Friday" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Friday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Saturday" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Saturday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a mat-button class="nav-link" href="#Sunday" data-toggle="tab">
+                            <i class="material-icons">restaurant_menu</i> Sunday
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="card-category" style="text-align: left;">Recipe for week</p>
+    </div>
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="Monday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment </th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Tuesday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Wednesday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Thursday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Friday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Saturday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane" id="Sunday">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Meal moment</th>
+                        <th>Breakfast</th>
+                        <th>Brunch</th>
+                        <th>Dinner</th>
+
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card card-chart">
+                <div class="card-header card-header-primary">
+                    <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-category">Energetic value</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col col-sm-2">
+            <form [formGroup]="formGroup" method="post" (ngSubmit)="on(f1)" #f1="ngForm">
+                <mat-form-field class="example-full-width">
+                    <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
+                        placeholder="Recipe for Breakfast" name="breakfast" ngModel required />
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+
+
+
+        <div class="col col-sm-2">
+            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSub(f1)" #f1="ngForm">
+                <mat-form-field class="example-full-width">
+                    <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
+                        placeholder="Recipe for Brunch" name="brunch" ngModel required />
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div class="col col-sm-2">
+
+            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSubmit(f1)" #f1="ngForm">
+                <mat-form-field class="example-full-width">
+                    <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
+                        placeholder="Recipe for Dinner" name="dinner" ngModel required />
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="col col-sm-2">
+            <button class="btn btn-primary pull-right" type="submit" [disabled]="f1.invalid">Submit</button>
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>

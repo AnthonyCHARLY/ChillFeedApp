@@ -39,6 +39,7 @@ import { WeekFeedSportPlanningComponent } from './clients-components/week-feed-s
 import { ClientNeedsComponent } from './clients-components/client-needs/client-needs.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule, 
@@ -58,7 +59,8 @@ import { ClientNeedsComponent } from './clients-components/client-needs/client-n
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    
     
 
   ],

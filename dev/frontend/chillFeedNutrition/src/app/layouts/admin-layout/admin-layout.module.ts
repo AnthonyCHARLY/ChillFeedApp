@@ -31,6 +31,8 @@ import { RecipesComponent } from 'app/recipes/recipes.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatListModule} from '@angular/material/list';
 import { HomePageComponent } from 'app/home-page/home-page.component';
+import { WeekNeedsPlanningComponent } from 'app/clients-components/week-needs-planning/week-needs-planning.component';
+
 
 @NgModule({
   imports: [
@@ -67,7 +69,8 @@ import { HomePageComponent } from 'app/home-page/home-page.component';
     RecipesComponent,
     WeekFeedSportPlanningComponent,
     ClientNeedsComponent,
-    HomePageComponent
+    HomePageComponent,
+    WeekNeedsPlanningComponent
   ]
 })
 

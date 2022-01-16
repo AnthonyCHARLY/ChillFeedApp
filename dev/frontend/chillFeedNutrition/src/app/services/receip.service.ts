@@ -40,6 +40,7 @@ export class ReceipService {
             .subscribe(
               (rep: any) => {
                 register.receipNamesList = rep.data;
+                console.log("recipe dans service " +  register.receipNamesList);
                 resolve(true);
               },
               error => {
@@ -57,6 +58,7 @@ export class ReceipService {
             .subscribe(
               (rep: any) => {              
                 register.receipsData = rep.data;
+                
                 resolve(true);
               },
               error => {
