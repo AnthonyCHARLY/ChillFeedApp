@@ -17,7 +17,7 @@ les routes de cette api sont dispnoble au format swagger en suivant le lien : <h
 ### Sans Docker
 #### Prérequis:
 
-- node version supérieur à 10.24.0 (téster qu'avec cette dérnière)
+- node version supérieur à 10.24.0 (testé qu'avec cette dernière et la version 14)
 
 
 - lancer les commandes suivantes :
@@ -27,7 +27,7 @@ $ cd backend
 ```sh
 $ npm install 
 ```
-```sh
+```sh   
 $ npm run start
 ```
 ### Avec Docker
