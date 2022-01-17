@@ -14,12 +14,12 @@ import { ReceipService } from 'app/services/receip.service';
 export class WeekNeedsPlanningComponent implements OnInit {
 
   
-
+    week =[];
     websiteViewsChart : any;
     datawebsiteViewsChart = {
-      labels: ['Monday'],
+      labels: ['Kcal', 'Protein', 'Lipids'],
       series: [
-        [2000]
+        [1000,400,180]
   
       ]
     };
@@ -48,7 +48,7 @@ export class WeekNeedsPlanningComponent implements OnInit {
 
   formGroup : FormGroup;
   constructor(private recipeService : ReceipService,private router : Router  , private apifood: ApiService  ,private fb : FormBuilder) {
-    
+    this.week =['Monday','Tuesday'];
     
    }
 
