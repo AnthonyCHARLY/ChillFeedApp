@@ -13,8 +13,6 @@ import { MatSelectionListChange } from '@angular/material/list';
   styleUrls: ['./register-ingredient.component.scss']
 })
 export class RegisterIngredientComponent implements OnInit {
-  submitSearch: boolean;
-  search: string;
 
   ingredientData = {
     name: '',
@@ -26,7 +24,6 @@ export class RegisterIngredientComponent implements OnInit {
     quantity: 0
 
   }
-
 
   searchedIngredients: any[];
   myIngredientsId: string[];

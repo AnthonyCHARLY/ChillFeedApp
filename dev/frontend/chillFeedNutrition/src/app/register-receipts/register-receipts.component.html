@@ -1,118 +1,205 @@
 <div class="main-content">
     <div class="container-fluid">
+
         <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-header card-header-warning">
-                            <h4 class="card-title">Find an ingredient</h4>
-                            <p class="card-category">add an ingredient to your receip </p>
+
+            <div class="col-md-6 col-sm-12">
+
+                <div class="card">
+
+                    <div class="card-header card-header-warning">
+
+                        <h4 class="card-title">Ingredient</h4>
+                        <p class="card-category">Ingredient informations</p>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Name" name="name" value="{{ingredientData.name}}"
+                                    [disabled]="true">
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protein" name="protein"
+                                            value="{{ingredientData.protein}}" type="number" [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Lipid" name="lipid" value="{{ingredientData.lipid}}"
+                                            type="number" [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Carbs" name="carbs" value="{{ingredientData.carbs}}"
+                                            type="number" [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="kcal" name="kcal" value="{{ingredientData.kcal}}"
+                                            type="number" [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Quantity" name="qty"
+                                            value="{{ingredientData.quantity}}" type="number" [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Unit" name="unit" value="{{ingredientData.unit}}"
+                                        [disabled]="true">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Recipe quantity" name="recipeQty" type="number" ngModel required>
+                                    </mat-form-field>
+                                </div>
+    
+                                <div class="col-md-3">
+                                    <button class="btn btn-warning pull-right" (click)="onCreate2()">Add</button>
+                                </div>
+    
+                            </div>
+
                         </div>
-                        <div class="card-body">                          
-                            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
+
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-header card-header-warning">
+
+                        <h4 class="card-title">Find an ingredient</h4>
+                        <p class="card-category">add an ingredient to your receip </p>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <!--<form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
                                 <mat-form-field>
-                                  <input formControlName="name" matInput type="text" [matAutocomplete]="auto" name="name" ngModel required />
-                                  <mat-autocomplete #auto="matAutocomplete">
-                                    <mat-option *ngFor="let item of filteredOptions" [value]="item">
-                                      {{item}}
-                                    </mat-option>
-                                  </mat-autocomplete>
+                                    <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
+                                        name="name" ngModel required />
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                                            {{item}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                 </mat-form-field>
                                 <div class="col-md-4">
                                     <button mat-raised-button type="submit" class="btn btn-danger pull-right"
                                         [disabled]="f1.invalid">Search</button>
                                 </div>
-                              </form>
+                            </form> -->
+
+                            <div class="col-8">
+
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Ingredient" type="text" name="dbIngredients"
+                                        (keyup)="onKeySeaerchedIngredients($event)">
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-12">
+
+                                <mat-selection-list [multiple]="false"
+                                    (selectionChange)="onChangeMyIngredients($event)">
+                                    <mat-list-option class="list-single-selection-example"
+                                        *ngFor="let ingredient of mySearchedIngredients" value="{{ingredient}}">
+                                        {{ingredient}} 
+                                    </mat-list-option>
+                                </mat-selection-list>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-warning">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Your Recipe:</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row" *ngIf="submitSearch">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-warning">
-                                <h4 class="card-title">Ingredient Information</h4>
-                                <p class="card-category">{{this.ingredientData.name}}</p>
-                            </div>
-                            <div class="card-content table-responsive table-full-width">
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
                                 <table class="table">
-                                    <thead class="text-warning">
-                                        <th>Information</th>
-                                        <th>Value</th>
-                                    </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>protein</td>
-                                            <td>{{this.ingredientData.protein}}</td>
+                                        <tr *ngFor="let ingredient of this.ingredientList">
+                                            <td> {{ingredient.name}}</td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Remove"
+                                                    (click)="onRemoveIngredient(ingredient)" *ngIf="ingredient"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-warning btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>lipid</td>
-                                            <td>{{this.ingredientData.lipid}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>kcal</td>
-                                            <td>{{this.ingredientData.kcal}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>carbs</td>
-                                            <td>{{this.ingredientData.carbs}}</td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
+                                <form method="post" (ngSubmit)="onCreate(ff)" #ff="ngForm">
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Name" name="name" ngModel required>
+                                        </mat-form-field>
+                                    </div>
+                                    <button mat-raised-button class="btn btn-warning pull-right"
+                                        [disabled]="ff.invalid">Create</button>
+                                </form>
 
                             </div>
-                            <div class="col-md-4">
-                                <button mat-raised-button (click)="onAdd()"
-                                    class="btn btn-warning pull-right">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        
-
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header card-header-tabs card-header-warning">
-                    <div class="nav-tabs-navigation">
-                        <div class="nav-tabs-wrapper">
-                            <span class="nav-tabs-title">Your Recipe:</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="profile">
-                            <table class="table">
-                                <tbody>
-                                    <tr *ngFor="let ingredient of this.ingredientList" >
-                                        <td> {{ingredient.name}}</td>
-                                        <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveIngredient(ingredient)" *ngIf="ingredient"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-warning btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <form method="post" (ngSubmit)="onCreate(ff)" #ff="ngForm">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required>
-                                    </mat-form-field>
-                                </div>
-                                <button mat-raised-button class="btn btn-warning pull-right"
-                                    [disabled]="ff.invalid">Create</button>
-                            </form>
-                            
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+
+
     </div>
 </div>

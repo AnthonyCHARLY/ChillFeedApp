@@ -1,35 +1,47 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header card-chart card-header-warning">
-                <div class="ct-chart" id="dailySalesChart"></div>
-            </div>
-            <div  class="card-body" >
-                <h4 class="card-title">Weight</h4>
-                <p class="card-category">
-                    <span  class="text-warning" *ngIf="!curveObjectif" ><i class="fa fa-long-arrow-down"></i> {{valueWeight}} Kilo </span>
-                    <span  class="text-succes" *ngIf="curveObjectif" ><i class="fa fa-long-arrow-up"></i> {{valueWeight}} Kilo </span>
-                    Evolution Weight .</p>
-            </div>
+<div class="card">
+
+    <div class="card-header card-chart card-header-warning">
+
+        <div class="ct-chart" id="dailySalesChart"></div>
+    </div>
+
+    <div class="card-body">
+
+
+
+        <h4 class="card-title">Weight</h4>
+        <p class="card-category">
+            <span class="text-warning" *ngIf="!curveObjectif"><i class="fa fa-long-arrow-down"></i>
+                {{valueWeight}} Kilo </span>
+            <span class="text-succes" *ngIf="curveObjectif"><i class="fa fa-long-arrow-up"></i> {{valueWeight}}
+                Kilo </span>
+            Evolution Weight .
+        </p>
+
+
+        <form method="post" (ngSubmit)="onSubmit(formm)" #formm="ngForm">
             <div class="row">
-                <form method="post" (ngSubmit)="onSubmit(formm)" #formm="ngForm">
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <input type="number"  placeholder="Enter new weight" name="weight" class="form-control"  ngModel/>
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="number" placeholder="Enter new weight" name="weight" class="form-control"
+                            ngModel />
                     </div>
-                    <div class="col-sm-8">
-                        <button mat-raised-button type="submit" class="btn btn-warning" [disabled]="formm.invalid">Add new Weight</button>
-                        
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <div class="card-stats">
-                    <i class="material-icons">access_time</i> updated last week
+                </div>
+                <div class="col-md-6">
+                    <button mat-raised-button type="submit" class="btn btn-warning"
+                        [disabled]="formm.invalid">Add weight</button>
                 </div>
             </div>
+        </form>
 
+
+    </div>
+
+
+    <div class="card-footer">
+        <div class="card-stats">
+            <i class="material-icons">access_time</i> updated last week
         </div>
     </div>
+
 </div>

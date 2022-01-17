@@ -13,7 +13,7 @@ export class IngredientService {
   }
 
   addIngredient(ingredientData: object) {
-    
+
     return new Promise((resolve, rejected) => {
       let currentUserId = this.authService.getCurentUserId();
       this.httpClient.post('http://localhost:5000/api/users/' + currentUserId + '/addIngredient', ingredientData)
@@ -56,38 +56,39 @@ export class IngredientService {
   }
 
   getIngredientById(id: string, fen: any) {
-    console.log('bonjour');
-    
-    console.log(id);
-    
-    this.httpClient.get('http://localhost:5000/api/ingredients/findById/' + id)
-      .subscribe(
-        (data: any) => {
-          console.log(data.data);
-          fen.myIngredients.push(data.data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    return new Promise(
+      (resolve, rejected) => {
+        this.httpClient.get('http://localhost:5000/api/ingredients/findById/' + id)
+          .subscribe(
+            (data: any) => {
+              fen.myIngredients.push(data.data);
+              resolve(data.data.name);
+            },
+            error => {
+              console.log(error);
+              rejected(true);
+            }
+          );
+      });
   }
 
-  getAllUserIngredients(fen: any){
-    return new Promise((resolve, rejected) => {
-      let currentUserId = this.authService.getCurentUserId();
-      this.httpClient.get('http://localhost:5000/api/users/getIngredients/' + currentUserId)
-        .subscribe(
-          (rep: any) => {
-            
-            fen.myIngredientsId = rep.data;
-            resolve(true);
-          },
-          error => {
-            rejected(true);
-            console.log(error);
-          }
-        );
-    })
+  getAllUserIngredients(fen: any) {
+    return new Promise(
+      (resolve, rejected) => {
+        let currentUserId = this.authService.getCurentUserId();
+        this.httpClient.get('http://localhost:5000/api/users/getIngredients/' + currentUserId)
+          .subscribe(
+            (rep: any) => {
+
+              fen.myIngredientsId = rep.data;
+              resolve(true);
+            },
+            error => {
+              console.log(error);
+              rejected(true);
+            }
+          );
+      });
   }
 
   getAllIngredientsName(fen: any) {
@@ -95,8 +96,8 @@ export class IngredientService {
       this.httpClient.get('http://localhost:5000/api/ingredients/getNames')
         .subscribe(
           (rep: any) => {
-            
-            fen.myIngredients = rep.data;
+
+            fen.option = rep.data;
             resolve(true);
           },
           error => {
