@@ -98,5 +98,17 @@ export class CustomerService {
           );
       })
   }
+  updateWeight(customerId: string,weight : string, instance: any) {
+    this.httpClient.put('http://localhost:5000/api/customers/updateWeight/'+customerId+'/'+weight,null)
+      .subscribe(
+        (rep: any) => {
+          console.log(rep.data);
+          instance.currentClient = rep.data;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 
 }
