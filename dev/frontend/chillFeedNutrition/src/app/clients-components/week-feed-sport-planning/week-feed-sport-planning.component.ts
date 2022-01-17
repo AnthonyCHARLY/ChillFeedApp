@@ -203,11 +203,11 @@ export class WeekFeedSportPlanningComponent implements OnInit {
   }
 
   changeSelection(item: any) {
-    console.log(item.isChecked);
+
   }
 
   calculate_needs(){
-     console.log(this.checkboxesFeed, this.checkboxesSport);
+
   }
  
 }

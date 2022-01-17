@@ -150,7 +150,7 @@
         </div>
 
         <div class="col col-sm-2">
-            <form [formGroup]="formGroup" method="post" (ngSubmit)="on(f1)" #f1="ngForm">
+            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSubmit(f1)" #f1="ngForm">
                 <mat-form-field class="example-full-width">
                     <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
                         placeholder="Recipe for Breakfast" name="breakfast" ngModel required />
@@ -166,7 +166,7 @@
 
 
         <div class="col col-sm-2">
-            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSub(f1)" #f1="ngForm">
+            <form [formGroup]="formGroup" method="post" (ngSubmit)="onSubmit(f1)" #f1="ngForm">
                 <mat-form-field class="example-full-width">
                     <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
                         placeholder="Recipe for Brunch" name="brunch" ngModel required />

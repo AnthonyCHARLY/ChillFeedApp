@@ -53,7 +53,6 @@ export class AuthService implements CanActivate{
           },
           error => {
             rejected(true);
-            console.log(error);
 
           }
         );

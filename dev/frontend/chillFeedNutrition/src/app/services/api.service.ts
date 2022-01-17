@@ -53,7 +53,7 @@ export class ApiService {
                 quantity: 0
             
               }
-              console.log(response.hits);
+
               
               for (var i = 0; i < response.hits.length; i++) {
                 ingredientData.name = response.hits[i].fields.item_name;

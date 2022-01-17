@@ -23,17 +23,17 @@ export class CustomerService {
   addCustomer(customerData: object) {
     return new Promise((resolve, rejected) => {
       let currentUserId = this.authService.getCurentUserId();
-      console.log(currentUserId);
+
 
       this.httpClient.post('http://localhost:5000/api/users/' + currentUserId + '/addCustomer', customerData)
         .subscribe(
           (data: any) => {
-            console.log(data);
+
             resolve(true);
           },
           error => {
             rejected(true);
-            console.log(error);
+
           }
         );
     })
@@ -47,7 +47,7 @@ export class CustomerService {
           this.currentCustomerSubject.next(this.currentCustomer);
         },
         error => {
-          console.log(error);
+
         }
       );
   }
@@ -61,7 +61,7 @@ export class CustomerService {
             resolve(true);
           },
           error => {
-            console.log(error);
+
             rejected(true);
           }
         );
@@ -72,7 +72,7 @@ export class CustomerService {
     this.httpClient.get('http://localhost:5000/api/customers/findById/' + customerId)
       .subscribe(
         (data: any) => {
-          console.log(data.data);
+
           fen.customers.push(data.data);
         },
         error => {
@@ -86,7 +86,7 @@ export class CustomerService {
         this.httpClient.delete('http://localhost:5000/api/users/'+currentUserId+'/deleteClient/'+clientId)
           .subscribe(
             (rep: any) => {     
-              console.log("rep.data => ",rep.data.customers)         
+     
               instance.customers= rep.data.customers;       
               resolve(true);
             },
@@ -102,7 +102,6 @@ export class CustomerService {
     this.httpClient.put('http://localhost:5000/api/customers/updateWeight/'+customerId+'/'+weight,null)
       .subscribe(
         (rep: any) => {
-          console.log(rep.data);
           instance.currentClient = rep.data;
         },
         error => {

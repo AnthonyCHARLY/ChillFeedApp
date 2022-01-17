@@ -57,7 +57,6 @@ export class RegisterCustomersComponent implements OnInit {
     this.customerData.sexe = form.value.sexe;
 
     this.customerService.addCustomer(this.customerData);
-    console.log(form.value.sexe + "  sexe");
     
     this.router.navigate(['clients']);
   }

@@ -65,7 +65,7 @@ module.exports.updateCustomerWeight = async function(idCustomer,weight){
         customer = await Customer.findById(idCustomer); 
         customer.weightCurve.push(weight);
         customer.save();
-         console.log(customer);
+        console.log(customer);
 
         if(!customer){
             return {

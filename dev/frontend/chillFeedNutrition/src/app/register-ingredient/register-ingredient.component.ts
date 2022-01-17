@@ -40,7 +40,7 @@ export class RegisterIngredientComponent implements OnInit {
       () => {
         this.myIngredients = [];
         this.myIngredientsId.forEach(id => {
-          console.log(id);
+
           
           this.ingredientService.getIngredientById(id,this);
         });
@@ -61,7 +61,7 @@ export class RegisterIngredientComponent implements OnInit {
     this.ingredientData.carbs = this.searchedIngredients[value.option.value].carbs;
     this.ingredientData.unit = this.searchedIngredients[value.option.value].unit;
     this.ingredientData.quantity = this.searchedIngredients[value.option.value].quantity;
-    console.log(this.myIngredients);
+
     
   }
 
@@ -75,8 +75,7 @@ export class RegisterIngredientComponent implements OnInit {
         this.ingredientService.getAllUserIngredients(this).then(
           () => {
             this.myIngredients = [];
-            this.myIngredientsId.forEach(id => {
-              console.log(id);
+            this.myIngredientsId.forEach(id => {;
               
               this.ingredientService.getIngredientById(id,this);
             });

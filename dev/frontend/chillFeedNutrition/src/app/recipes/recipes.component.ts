@@ -25,7 +25,7 @@ export class RecipesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.receipService.getAllUserReceipsInfo(this).then(()=>console.log(this.receipsData));
+    this.receipService.getAllUserReceipsInfo(this);
     
     
     
@@ -34,8 +34,7 @@ export class RecipesComponent implements OnInit {
 
   }
   onRemoveReceip(receip:any){
-    console.log(receip);
-   this.receipService.removeReceip(receip._id,this).then(()=>console.log(this.receipsData));
+   this.receipService.removeReceip(receip._id,this);
     
   }
 

@@ -121,7 +121,6 @@ module.exports.getCustomers = async function(id){
 
 module.exports.addIngredient = async function(id,body){
     try{
-        console.log(body);
         let ingredient  = new Ingredient({
             ...body
         });
@@ -174,7 +173,6 @@ module.exports.getIngredients = async function(id){
 
 module.exports.addReceip = async function(id,body){
     try {
-        console.log(body);
         let receip = new Receip({
             ...body
         });  
@@ -284,7 +282,6 @@ module.exports.getUserReceipsInfo = async function(id){
 
             let customers = await User.findById(id).select('customers -_id').populate('customers');
 
-            console.log(customers);
             
             return {
                 success: true,
