@@ -15,9 +15,7 @@ export class ReceipService {
     constructor( private httpClient : HttpClient, private authService : AuthService){}
 
     addReceip(receipData : object ){
-        console.log(receipData);
-        console.log('bonjour');
-        
+
         return new Promise((resolve, rejected) => {
             let currentUserId = this.authService.getCurentUserId();
            

@@ -42,12 +42,17 @@ export class RecipesComponent implements OnInit {
     this.receipService.getAllUserReceipsInfo(this).then(
       ()=> {
         this.myRecipes = [];
+        console.log('=========>',this.myRecipesId);
         this.myRecipesId.forEach(id => {
-          
+          console.log('=2========>',this.myRecipesId);
           this.receipService.getRecipeById(id,this).then(
-            response => {
+            response =>
+            {
+
+              
               
               this.mySearchedRecipes.push(response);
+              
               this.myRecipesNames.push(response);
 
             }
@@ -77,12 +82,12 @@ export class RecipesComponent implements OnInit {
   }
 
   onRemoveRecipe(){
-    console.log('salut');
+
     
     let index = this.myRecipesNames.indexOf(this.recipeData.name);
     let indexSearch = this.mySearchedRecipes.indexOf(this.recipeData.name);
     let indexId = this.myRecipesId.indexOf(this.recipeData._id);
-    console.log('bonjour');
+
     
 
     this.receipService.removeReceip(this.recipeData._id).then(
