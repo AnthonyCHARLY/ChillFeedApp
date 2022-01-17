@@ -19,12 +19,10 @@ export class IngredientService {
       this.httpClient.post('http://localhost:5000/api/users/' + currentUserId + '/addIngredient', ingredientData)
         .subscribe(
           (data: any) => {
-            console.log(data);
             resolve(true);
           },
           error => {
             rejected(true);
-            console.log(error);
 
           }
         );

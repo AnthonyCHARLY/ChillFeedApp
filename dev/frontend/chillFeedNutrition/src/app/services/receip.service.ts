@@ -41,7 +41,7 @@ export class ReceipService {
             .subscribe(
               (rep: any) => {
                 register.receipNamesList = rep.data;
-                console.log("recipe dans service " +  register.receipNamesList);
+
                 resolve(true);
               },
               error => {
@@ -116,8 +116,7 @@ export class ReceipService {
         let currentUserId = this.authService.getCurentUserId();
           this.httpClient.delete('http://localhost:5000/api/users/'+currentUserId+'/deleteReceip/'+receipId)
             .subscribe(
-              (rep: any) => {     
-                console.log("rep.data => "+rep.data)                 
+              (rep: any) => {                  
                 resolve(true);
               },
               error => {

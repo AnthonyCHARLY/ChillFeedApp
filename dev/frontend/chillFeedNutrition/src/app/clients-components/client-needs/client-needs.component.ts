@@ -9,7 +9,19 @@ import { Subscription } from 'rxjs';
 })
 export class ClientNeedsComponent implements OnInit {
 
-  currentClient: any;
+  currentClient = {
+    name     : "",
+    email    : "",
+    age      : 0, 
+    weight   : 0, 
+    height    : 0, 
+    morphology: "", 
+    activity  : "",
+    goal      : "",
+    sexe      : "",
+    weightCurve: [],
+    weightGoal: 0
+  }
   currentClientSubscription: Subscription;
 
   private sexIndices = {
@@ -106,8 +118,9 @@ export class ClientNeedsComponent implements OnInit {
   BMI: number;
   BMIStat: string;
 
-  constructor(private customerServie: CustomerService) {
-    this.currentClientSubscription = this.customerServie.currentCustomerSubject.subscribe(
+  constructor(private customerService: CustomerService) {
+
+    this.currentClientSubscription = this.customerService.currentCustomerSubject.subscribe(
       (customer: any) => {
         this.currentClient = customer;
 
@@ -147,6 +160,7 @@ export class ClientNeedsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

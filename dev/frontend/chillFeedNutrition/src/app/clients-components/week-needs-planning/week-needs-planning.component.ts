@@ -44,7 +44,7 @@ export class WeekNeedsPlanningComponent implements OnInit {
 
 
   receipNamesList = ["banan", "chocolate", "apple"];
-  filteredOptions;
+  filteredOptions = [];
 
   formGroup : FormGroup;
   constructor(private recipeService : ReceipService,private router : Router  , private apifood: ApiService  ,private fb : FormBuilder) {
@@ -58,7 +58,6 @@ export class WeekNeedsPlanningComponent implements OnInit {
     this.websiteViewsChart = new Chartist.Bar('#websiteViewsChart', this.datawebsiteViewsChart, this.optionswebsiteViewsChart, this.responsiveOptions);
   }
   changeSelection(item: any) {
-    console.log(item.isChecked);
   }
 
   initForm(){
@@ -84,20 +83,14 @@ export class WeekNeedsPlanningComponent implements OnInit {
   }
 
   getNames(){
-     this.recipeService.getAllReceipsName(this).then((data)=> 
-     {this.filteredOptions=data;});
+     this.recipeService.getAllReceipsName(this);
       
      
   }
   onSubmit(form: NgForm){
-    console.log("form dinner : " + form.value.dinner);
+
   }
-  on(form: NgForm){
-    console.log("form dinner : " + form.value.dinner);
-  }
-  onSub(form: NgForm){
-    console.log("form dinner : " + form.value.dinner);
-  }
+
   
 
 

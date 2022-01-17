@@ -6,7 +6,7 @@
                 <p class="card-category">Client information</p>
             </div>
             <div class="card-content table-responsive table-full-width">
-                <table class="table">
+                <table class="table" >
                     <thead class="text-danger">
                         <th>Information</th>
                         <th>Value</th>
@@ -60,19 +60,19 @@
                     <tbody>
                         <tr>
                             <td>Kcal</td>
-                            <td>{{kcalNeeds}}</td>
+                            <td>{{kcalNeeds | number:'.2-2' }}</td>
                         </tr>
                         <tr>
                             <td>Protein</td>
-                            <td>{{protNeeds}}</td>
+                            <td>{{protNeeds | number:'.2-2' }}</td>
                         </tr>
                         <tr>
                             <td>Lipids</td>
-                            <td>{{lipNeeds}}</td>
+                            <td>{{lipNeeds | number:'.2-2' }}</td>
                         </tr>
                         <tr>
                             <td>Carbohydrates</td>
-                            <td>{{carbNeeds}}</td>
+                            <td>{{carbNeeds | number:'.2-2' }}</td>
                         </tr>
                         <tr>
                             <td>BMI</td>

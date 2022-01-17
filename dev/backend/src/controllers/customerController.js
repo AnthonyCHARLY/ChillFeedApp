@@ -3,7 +3,6 @@ const Customer = require('../models/customerModel');
 
 module.exports.getCustomerByEmail = async function(body) {
     try {
-        console.log(body.email);
         let customer = await Customer.findOne({
             email: body.email
         });
@@ -65,7 +64,7 @@ module.exports.updateCustomerWeight = async function(idCustomer,weight){
         customer = await Customer.findById(idCustomer); 
         customer.weightCurve.push(weight);
         customer.save();
-         console.log(customer);
+
 
         if(!customer){
             return {

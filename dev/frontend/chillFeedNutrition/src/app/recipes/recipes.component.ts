@@ -39,12 +39,12 @@ export class RecipesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.receipService.getAllUserReceipsInfo(this).then(
       ()=> {
         this.myRecipes = [];
-        console.log('=========>',this.myRecipesId);
+
         this.myRecipesId.forEach(id => {
-          console.log('=2========>',this.myRecipesId);
           this.receipService.getRecipeById(id,this).then(
             response =>
             {
@@ -60,7 +60,7 @@ export class RecipesComponent implements OnInit {
         });
       }
       );
-    
+
     
     
   }

@@ -158,8 +158,7 @@ export class RegisterReceiptsComponent implements OnInit {
   }
 
   onRemoveIngredient(i){
-    console.log(this.receipIngredientList);
-    console.log(i);
+
     
     this.recipeData.kcal -= this.receipIngredientList[i].ingredient.kcal*this.receipIngredientList[i].qty;
     this.recipeData.carbs -= this.receipIngredientList[i].ingredient.carbs*this.receipIngredientList[i].qty;
