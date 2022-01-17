@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSelectionListChange } from '@angular/material/list';
 import { ApiService } from 'app/services/api.service';
 import { ReceipService } from 'app/services/receip.service';
 
@@ -11,32 +12,106 @@ import { ReceipService } from 'app/services/receip.service';
 })
 export class RecipesComponent implements OnInit {
 
-  receipNamesList = [];
+  myRecipesId: string[];
+  myRecipes: any[];
+  myRecipesNames: any[];
+  mySearchedRecipes: any[];
 
-  receipsData = {
-    receips : [],
+  recipeData = {
+    _id: '',
+    name: '',
+    protein: 0,
+    lipid: 0,
+    carbs: 0,
+    kcal: 0
   }
+
+  
 
 
   constructor(private apifood: ApiService , private receipService: ReceipService ) { 
-   
     
+    this.myRecipesId = [];
+    this.myRecipes = [];
+    this.myRecipesNames = [];
+    this.mySearchedRecipes = []
     
   }
 
   ngOnInit(): void {
-    this.receipService.getAllUserReceipsInfo(this).then(()=>console.log(this.receipsData));
-    
-    
-    
-  }
-  onSearch(form: NgForm) {
+    this.receipService.getAllUserReceipsInfo(this).then(
+      ()=> {
+        this.myRecipes = [];
+        this.myRecipesId.forEach(id => {
+          
+          this.receipService.getRecipeById(id,this).then(
+            response => {
+              
+              this.mySearchedRecipes.push(response);
+              this.myRecipesNames.push(response);
 
-  }
-  onRemoveReceip(receip:any){
-    console.log(receip);
-   this.receipService.removeReceip(receip._id,this).then(()=>console.log(this.receipsData));
+            }
+          )
+        });
+      }
+      );
     
+    
+    
+  }
+
+  onChangeMyRecipes(event: MatSelectionListChange){
+    let index = this.myRecipesNames.indexOf(event.option.value);
+
+    this.recipeData._id = this.myRecipes[index]._id;
+    this.recipeData.name = this.myRecipes[index].name;
+    this.recipeData.kcal = this.myRecipes[index].kcal;
+    this.recipeData.protein = this.myRecipes[index].protein;
+    this.recipeData.lipid = this.myRecipes[index].lipid;
+    this.recipeData.carbs = this.myRecipes[index].carbs;
+    
+  }
+
+  onKeySearchedRecipes(event: any){
+    this.filterData(event.target.value);
+  }
+
+  onRemoveRecipe(recipe:string){
+    console.log('salut');
+    
+    let index = this.myRecipesNames.indexOf(recipe);
+    let indexSearch = this.mySearchedRecipes.indexOf(recipe);
+    let indexId = this.myRecipesId.indexOf(this.myRecipes[index]._id);
+    console.log('bonjour');
+    
+    console.log(recipe);
+    
+
+    this.receipService.removeReceip(this.myRecipes[index]._id).then(
+      () => {
+        this.myRecipesId.splice(indexId,1);
+        this.myRecipesNames.splice(index,1);
+        this.myRecipes.splice(index,1);
+        this.mySearchedRecipes.splice(indexSearch,1);
+      }
+    );
+    
+  }
+
+  filterData(entry: string) {
+
+    this.mySearchedRecipes = [];
+
+    this.myRecipesNames.forEach(rec => {
+
+      let lowEntry = entry.toLowerCase();
+      let lowIng = rec.substring(0, entry.length).toLowerCase();
+
+      if (lowEntry === lowIng) {
+        this.mySearchedRecipes.push(rec);
+      }
+
+    });
   }
 
 

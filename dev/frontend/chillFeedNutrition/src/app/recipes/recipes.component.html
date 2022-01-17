@@ -1,84 +1,118 @@
 <div class="main-content">
+
     <div class="container-fluid">
+
         <div class="row">
+
             <div class="col-lg-6 col-md-12">
+
                 <div class="card">
+
                     <div class="card-header card-header-warning">
+
                         <h4 class="card-title">Recipes</h4>
-                        <p class="card-category">Find or create recipes</p>
+                        <p class="card-category">Find or create a recipes</p>
+
                     </div>
+
                     <div class="card-body">
-                        <form method="post" (ngSubmit)="onSearch(f)" #f="ngForm">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Name" name="name" ngModel required>
-                                    </mat-form-field>
-                                </div>
 
+                        <div class="row">
 
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-warning" [disabled]="f.invalid">Search</button>
-                                    <button class="btn btn-warning pull-right" routerLink="/register-recipes">New
-                                        Recipe</button>
-                                </div>
+                            <div class="col-md-8">
+
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Recipe name" type="text" (keyup)="onKeySearchedRecipes($event)">
+                                </mat-form-field>
+
                             </div>
-                            <div class="clearfix"></div>
-                        </form>
+
+                            <div class="col-md-4">
+
+                                <button class="btn btn-warning pull-right" routerLink="/register-recipes">New Recipe</button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-12">
+
+                                <mat-selection-list [multiple]="false" (selectionChange)="onChangeMyRecipes($event)">
+
+                                    <mat-list-option class="list-single-selection-example" *ngFor="let recipe of mySearchedRecipes" value="{{recipe}}">
+
+                                        <div class="col-12">
+                                            <label>{{recipe}}</label>
+
+                                            <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveRecipe(recipe)" [matTooltipPosition]="'above'" class="btn btn-warning btn-link btn-sm btn-just-icon pull-right">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </div>
+                                    </mat-list-option>
+
+                                </mat-selection-list>
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col-lg-6 col-md-12">
+
+            <div class="col-md-6 col-sm-12">
+
                 <div class="card">
+
                     <div class="card-header card-header-warning">
+
                         <h4 class="card-title">Information of recipe</h4>
                         <p class="card-category">Recipe </p>
+
                     </div>
-                    <div class="card-body"
-                    >
+
+                    <div class="card-body">
+
                         <div class="card-content table-responsive table-full-width">
+
                             <table class="table">
+
                                 <thead class="text-warning">
-                                    <th>Ingredients</th>
+
+                                    <th>Name</th>
                                     <th>Protein</th>
                                     <th>Lipid</th>
                                     <th>kcal</th>
                                     <th>carbs</th>
+
                                 </thead>
+
                                 <tbody>
-                                    <tr *ngFor="let receip of receipsData.receips">
 
-                                        <td> {{receip.name}}</td>
-                                        <td> {{receip.protein}}</td>
-                                        <td> {{receip.lipid}}</td>
-                                        <td> {{receip.kcal}}</td>
-                                        <td> {{receip.carbs}}</td>
-                                        <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                (click)="onRemoveReceip(receip)" [matTooltipPosition]="'above'"
-                                                class="btn btn-warning btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
+                                    <td> {{recipeData.name}}</td>
+                                    <td> {{recipeData.protein}}</td>
+                                    <td> {{recipeData.lipid}}</td>
+                                    <td> {{recipeData.kcal}}</td>
+                                    <td> {{recipeData.carbs}}</td>
 
-                                    </tr>
-                                    <thead class="text-warning">
-                                        <tr>
-                                            <td> Total</td>
-                                            <td> {{receipsData.receips.length}}</td>
-                                        </tr>
-                                    </thead>
                                 </tbody>
+
                             </table>
 
                         </div>
-                        
 
-                        <div class="clearfix"></div>
                     </div>
+
                 </div>
+
             </div>
 
         </div>
+
     </div>
+
 </div>

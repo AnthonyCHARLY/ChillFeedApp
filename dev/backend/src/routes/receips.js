@@ -1,6 +1,6 @@
-const receipsRouter =require('express').Router();
+const receipsRouter = require('express').Router();
 
-const { findNames, removeReceip , findByName } = require('../controllers/receipController');
+const { findNames, removeReceip, findByName, findById } = require('../controllers/receipController');
 
 /**
  * @openapi
@@ -15,8 +15,29 @@ const { findNames, removeReceip , findByName } = require('../controllers/receipC
  *       '404':
  *         description: error 
  */
-receipsRouter.route('/getNames').get(async(req,res)=> {
+receipsRouter.route('/getNames').get(async(req, res) => {
     let response = await findNames();
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
+/**
+ * @openapi
+ * 
+ * /recipes/findById/id:
+ *   get:
+ *     tags: [Recipe]
+ *     description: find a recipe by his id
+ *     responses:
+ *       '200':
+ *         description: Returns the recipe
+ *       '404':
+ *         description: error 
+ */
+receipsRouter.route('/findById/:id').get(async(req, res) => {
+    let response = await findById(req.params.id);
     if (response.success == true) {
         res.status(200).json(response);
     } else {
@@ -36,7 +57,7 @@ receipsRouter.route('/getNames').get(async(req,res)=> {
  *       '404':
  *         description: error 
  */
-receipsRouter.route('/findOneByName/:name').get(async(req,res)=> {
+receipsRouter.route('/findOneByName/:name').get(async(req, res) => {
     let response = await findByName(req.params.name);
     if (response.success == true) {
         res.status(200).json(response);
@@ -68,4 +89,4 @@ receipsRouter.route('/:id/deleteOne').delete(async(req, res) => {
 
 
 
-module.exports = receipsRouter 
+module.exports = receipsRouter

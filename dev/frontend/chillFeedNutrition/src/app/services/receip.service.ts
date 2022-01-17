@@ -54,13 +54,32 @@ export class ReceipService {
             );
         })
     }
-    getAllUserReceipsInfo(register:any ){
+
+    getRecipeById(id: string, fen: any){
+      return new Promise(
+        (resolve, rejected) => {
+          this.httpClient.get('http://localhost:5000/api/receips/findById/' + id)
+            .subscribe(
+              (data: any) => {
+                fen.myRecipes.push(data.data);
+                resolve(data.data.name);
+              },
+              error => {
+                console.log(error);
+                rejected(true);
+              }
+            ); 
+        });
+    }
+
+    getAllUserReceipsInfo(fen:any ){
       return new Promise((resolve, rejected) => {
         let currentUserId = this.authService.getCurentUserId();
           this.httpClient.get('http://localhost:5000/api/users/'+currentUserId+'/receipsInfos')
             .subscribe(
-              (rep: any) => {              
-                register.receipsData = rep.data;
+              (rep: any) => {         
+                          
+                fen.myRecipesId = rep.data;
                 
                 resolve(true);
               },
@@ -94,14 +113,13 @@ export class ReceipService {
         })
     }
     
-    removeReceip(receipId : any ,instance :any ){
+    removeReceip(receipId : any){
       return new Promise((resolve, rejected) => {
         let currentUserId = this.authService.getCurentUserId();
           this.httpClient.delete('http://localhost:5000/api/users/'+currentUserId+'/deleteReceip/'+receipId)
             .subscribe(
               (rep: any) => {     
-                console.log("rep.data => "+rep.data)         
-                instance.receipsData = rep.data;         
+                console.log("rep.data => "+rep.data)                 
                 resolve(true);
               },
               error => {

@@ -20,8 +20,7 @@
 
                             <div class="col-md-8">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Name" name="name" value="{{ingredientData.name}}"
-                                        [disabled]="true">
+                                    <input matInput placeholder="Name" name="name" value="{{ingredientData.name}}" [disabled]="true">
                                 </mat-form-field>
 
                             </div>
@@ -30,29 +29,25 @@
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Protein" name="protein"
-                                            value="{{ingredientData.protein}}" type="number" [disabled]="true">
+                                        <input matInput placeholder="Protein" name="protein" value="{{ingredientData.protein}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Lipid" name="lipid"
-                                            value="{{ingredientData.lipid}}" type="number" [disabled]="true">
+                                        <input matInput placeholder="Lipid" name="lipid" value="{{ingredientData.lipid}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Carbs" name="carbs"
-                                            value="{{ingredientData.carbs}}" type="number" [disabled]="true">
+                                        <input matInput placeholder="Carbs" name="carbs" value="{{ingredientData.carbs}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="kcal" name="kcal" value="{{ingredientData.kcal}}"
-                                            type="number" [disabled]="true">
+                                        <input matInput placeholder="kcal" name="kcal" value="{{ingredientData.kcal}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
@@ -62,22 +57,19 @@
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Quantity" name="qty"
-                                            value="{{ingredientData.quantity}}" type="number" [disabled]="true">
+                                        <input matInput placeholder="Quantity" name="qty" value="{{ingredientData.quantity}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Unit" name="unit" value="{{ingredientData.unit}}"
-                                            [disabled]="true">
+                                        <input matInput placeholder="Unit" name="unit" value="{{ingredientData.unit}}" [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Recipe quantity" name="recipeQty" type="number"
-                                            (keyup)="onKeyQty($event)">
+                                        <input matInput placeholder="Recipe quantity" name="recipeQty" type="number" (keyup)="onKeyQty($event)">
                                     </mat-form-field>
                                 </div>
 
@@ -109,8 +101,7 @@
                             <div class="col-8">
 
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Ingredient" type="text" name="dbIngredients"
-                                        (keyup)="onKeySeaerchedIngredients($event)">
+                                    <input matInput placeholder="Ingredient" type="text" (keyup)="onKeySeaerchedIngredients($event)">
                                 </mat-form-field>
 
                             </div>
@@ -121,10 +112,8 @@
 
                             <div class="col-12">
 
-                                <mat-selection-list [multiple]="false"
-                                    (selectionChange)="onChangeMyIngredients($event)">
-                                    <mat-list-option class="list-single-selection-example"
-                                        *ngFor="let ingredient of mySearchedIngredients" value="{{ingredient}}">
+                                <mat-selection-list [multiple]="false" (selectionChange)="onChangeMyIngredients($event)">
+                                    <mat-list-option class="list-single-selection-example" *ngFor="let ingredient of mySearchedIngredients" value="{{ingredient}}">
                                         {{ingredient}}
                                     </mat-list-option>
                                 </mat-selection-list>
@@ -165,16 +154,14 @@
                                     <div class="col-8">
 
                                         <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Name" name="name"
-                                                (keyup)="onKeyRecipeName($event)">
+                                            <input matInput placeholder="Name" name="name" (keyup)="onKeyRecipeName($event)">
                                         </mat-form-field>
 
                                     </div>
 
                                     <div class="col-4">
 
-                                        <button mat-raised-button class="btn btn-warning pull-right"
-                                            (click)=onCreate()>Create</button>
+                                        <button mat-raised-button class="btn btn-warning pull-right" (click)=onCreate()>Create</button>
 
                                     </div>
 
@@ -207,10 +194,7 @@
 
                                             <td> {{ing.ingredient.name}} ===> Quantity : {{ing.qty}}</td>
                                             <td class="td-actions text-right">
-                                                <button mat-raised-button type="button" matTooltip="Remove"
-                                                    (click)="onRemoveIngredient(i)" *ngIf="ing"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-warning btn-link btn-sm btn-just-icon">
+                                                <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveIngredient(i)" *ngIf="ing" [matTooltipPosition]="'above'" class="btn btn-warning btn-link btn-sm btn-just-icon">
                                                     <i class="material-icons">close</i>
                                                 </button>
                                             </td>
