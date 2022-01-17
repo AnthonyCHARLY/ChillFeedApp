@@ -49,7 +49,7 @@ customerRouter.route('/findById/:id').get(async(req,res)=> {
  * @openapi
  * 
  * /customers/updateWeight/id/weight:
- *   get:
+ *   put:
  *     tags: [Customer]
  *     description: update a customer weight found by his id
  *     responses:
