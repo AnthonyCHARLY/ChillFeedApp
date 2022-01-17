@@ -54,3 +54,40 @@ module.exports.findById = async function(id){
     }
 }
 
+module.exports.updateCustomerWeight = async function(idCustomer,weight){
+    try{
+        
+        let customer = await Customer.findByIdAndUpdate(
+            {_id : idCustomer },
+            { weight : Number(weight) }
+        ).exec();
+        
+        customer = await Customer.findById(idCustomer); 
+        customer.weightCurve.push(weight);
+        customer.save();
+         console.log(customer);
+
+        if(!customer){
+            return {
+                success: false,
+                msg:"customer not found",
+            }
+            
+        }else{
+            return {
+                success: true,
+                data: customer,
+            }
+        }
+
+
+    }catch(err){
+        return {
+            success: false,
+            msg:"can't update customer's weight "+err,
+        }
+    }
+}
+
+
+

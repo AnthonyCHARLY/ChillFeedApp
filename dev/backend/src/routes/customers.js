@@ -1,6 +1,6 @@
 const customerRouter = require('express').Router();
 
-const { getCustomerByEmail, findById } = require('../controllers/customerController');
+const { getCustomerByEmail, findById , updateCustomerWeight } = require('../controllers/customerController');
 
 /**
  * @openapi
@@ -39,6 +39,27 @@ customerRouter.route('/findOne').post(async(req,res)=> {
  */
 customerRouter.route('/findById/:id').get(async(req,res)=> {
     let response = await findById(req.params.id);
+    if (response.success == true) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
+});
+/**
+ * @openapi
+ * 
+ * /customers/id/updateWeight/weight:
+ *   get:
+ *     tags: [Customer]
+ *     description: find a customer by his id
+ *     responses:
+ *       '200':
+ *         description: Returns the customer
+ *       '404':
+ *         description: error 
+ */
+ customerRouter.route('/updateWeight/:id/:w').put(async(req,res)=> {
+    let response = await updateCustomerWeight(req.params.id,req.params.w);
     if (response.success == true) {
         res.status(200).json(response);
     } else {
