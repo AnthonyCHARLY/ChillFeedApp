@@ -70,17 +70,16 @@ export class RegisterReceiptsComponent implements OnInit {
   onChangeMyIngredients(event: MatSelectionListChange) {
 
     let index = this.myIngredientsNames.indexOf(event.option.value);
-    console.log(this.myIngredients[index]);
-    
+
     this.ingredientData._id = this.myIngredients[index]._id;
     this.ingredientData.name = this.myIngredients[index].name;
     this.ingredientData.protein = this.myIngredients[index].protein;
     this.ingredientData.lipid = this.myIngredients[index].lipid;
     this.ingredientData.carbs = this.myIngredients[index].carbs;
-    this.ingredientData.kcal= this.myIngredients[index].kcal;
+    this.ingredientData.kcal = this.myIngredients[index].kcal;
     this.ingredientData.unit = this.myIngredients[index].unit;
     this.ingredientData.quantity = this.myIngredients[index].quantity;
-    
+
     //this.ingredientData._id = this.myIngredients[index]
   }
 
@@ -88,20 +87,20 @@ export class RegisterReceiptsComponent implements OnInit {
     this.filterData(event.target.value);
   }
 
-  onKeyQty(event: any){
+  onKeyQty(event: any) {
     this.ingredientQty = event.target.value;
   }
 
-  onKeyRecipeName(event: any){
+  onKeyRecipeName(event: any) {
     this.recipeName = event.target.value;
   }
 
-  onRecipeName(event: any){
+  onRecipeName(event: any) {
 
   }
 
   onAdd() {
-    if(this.ingredientQty > 0){
+    if (this.ingredientQty > 0) {
       let qty = this.ingredientQty;
       let ing = JSON.parse(JSON.stringify(this.ingredientData));
       this.receipIngredientList.push(
@@ -109,32 +108,37 @@ export class RegisterReceiptsComponent implements OnInit {
           qty: qty,
           ingredient: ing
         }
-      );      
-      this.recipeData.protein += this.ingredientData.protein*this.ingredientQty;
-      this.recipeData.kcal += this.ingredientData.kcal*this.ingredientQty;
-      this.recipeData.lipid += this.ingredientData.lipid*this.ingredientQty;
-      this.recipeData.carbs += this.ingredientData.carbs*this.ingredientQty;
-      
+      );
+      this.recipeData.protein += this.ingredientData.protein * this.ingredientQty;
+      this.recipeData.kcal += this.ingredientData.kcal * this.ingredientQty;
+      this.recipeData.lipid += this.ingredientData.lipid * this.ingredientQty;
+      this.recipeData.carbs += this.ingredientData.carbs * this.ingredientQty;
+
     }
-    else{
+    else {
       console.log('unvalid quantity');
-      
+
     }
   }
 
   onCreate() {
 
-    let newRecipe = {
-      name: this.recipeName,
-      ingredients: this.receipIngredientList,
-      protein: this.recipeData.protein,
-      lipid: this.recipeData.lipid,
-      carbs: this.recipeData.carbs,
-      kcal: this.recipeData.kcal,
-    }
-    
-    this.receipService.addReceip(newRecipe).then(() => this.router.navigate(['/recipes']));
+    if (this.recipeName.length > 0) {
+      let newRecipe = {
+        name: this.recipeName,
+        ingredients: this.receipIngredientList,
+        protein: this.recipeData.protein,
+        lipid: this.recipeData.lipid,
+        carbs: this.recipeData.carbs,
+        kcal: this.recipeData.kcal,
+      }
 
+      this.receipService.addReceip(newRecipe).then(() => this.router.navigate(['/recipes']));
+    }
+    else{
+      console.log('unvalid name');
+      
+    }
   }
 
   filterData(entry: string) {
@@ -151,6 +155,17 @@ export class RegisterReceiptsComponent implements OnInit {
       }
 
     });
+  }
+
+  onRemoveIngredient(i){
+    console.log(this.receipIngredientList);
+    console.log(i);
+    
+    this.recipeData.kcal -= this.receipIngredientList[i].ingredient.kcal*this.receipIngredientList[i].qty;
+    this.recipeData.carbs -= this.receipIngredientList[i].ingredient.carbs*this.receipIngredientList[i].qty;
+    this.recipeData.protein -= this.receipIngredientList[i].ingredient.protein*this.receipIngredientList[i].qty;
+    this.recipeData.lipid -= this.receipIngredientList[i].ingredient.lipid*this.receipIngredientList[i].qty;
+    this.receipIngredientList.splice(i,1);
   }
 
 }

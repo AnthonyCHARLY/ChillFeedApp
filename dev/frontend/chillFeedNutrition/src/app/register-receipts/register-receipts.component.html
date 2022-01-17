@@ -106,22 +106,6 @@
 
                         <div class="row">
 
-                            <!--<form [formGroup]="formGroup" method="post" (ngSubmit)="onSearch(f1)" #f1="ngForm">
-                                <mat-form-field>
-                                    <input formControlName="name" matInput type="text" [matAutocomplete]="auto"
-                                        name="name" ngModel required />
-                                    <mat-autocomplete #auto="matAutocomplete">
-                                        <mat-option *ngFor="let item of filteredOptions" [value]="item">
-                                            {{item}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
-                                <div class="col-md-4">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                                        [disabled]="f1.invalid">Search</button>
-                                </div>
-                            </form> -->
-
                             <div class="col-8">
 
                                 <mat-form-field class="example-full-width">
@@ -196,14 +180,35 @@
 
                                 </div>
 
+                                <div class="row">
+
+                                    <table class="table">
+                                        <thead class="text-warning">
+                                            <th>kcal</th>
+                                            <th>Protein</th>
+                                            <th>Lipid</th>
+                                            <th>carbs</th>
+                                        </thead>
+                                        <tbody>
+
+                                            <td> {{recipeData.kcal}}</td>
+                                            <td> {{recipeData.protein}}</td>
+                                            <td> {{recipeData.lipid}}</td>
+                                            <td> {{recipeData.carbs}}</td>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
                                 <table class="table">
                                     <tbody>
-                                        <tr *ngFor="let ing of receipIngredientList; let index = i">
+                                        <tr *ngFor="let ing of receipIngredientList; let i = index">
 
-                                            <td> {{ing.ingredient.name}}   ===>   Quantity : {{ing.qty}}</td>
+                                            <td> {{ing.ingredient.name}} ===> Quantity : {{ing.qty}}</td>
                                             <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Remove"
-                                                    (click)="onRemoveIngredient(ing)" *ngIf="ing"
+                                                    (click)="onRemoveIngredient(i)" *ngIf="ing"
                                                     [matTooltipPosition]="'above'"
                                                     class="btn btn-warning btn-link btn-sm btn-just-icon">
                                                     <i class="material-icons">close</i>
