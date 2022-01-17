@@ -7,7 +7,10 @@ const receipSchema = new mongoose.Schema({
     lipid     : {type : Number},
     carbs     : {type : Number},
     kcal      : {type : Number},
-    ingredients : [{type : mongoose.Schema.Types.ObjectId, ref: "Ingredient"}],
+    ingredients : [{
+       ingredient: {type : mongoose.Schema.Types.ObjectId, ref: "Ingredient"},
+       qty: {type : Number , default : 1}
+    }],
     
 });
 

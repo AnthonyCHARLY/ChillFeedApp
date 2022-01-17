@@ -29,7 +29,7 @@ receipsRouter.route('/getNames').get(async(req,res)=> {
  * /receips/findOneByName/name:
  *   get:
  *     tags: [Receip] 
- *     description: find a receip found by his names
+ *     description: get a receip found by his name
  *     responses:
  *       '200':
  *         description: Returns the receip found
