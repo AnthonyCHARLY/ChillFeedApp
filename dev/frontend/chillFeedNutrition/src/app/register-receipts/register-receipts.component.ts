@@ -30,17 +30,24 @@ export class RegisterReceiptsComponent implements OnInit {
     quantity: 0
   }
 
-  ingredientList = [];
+  ingredientQty = 0;
 
-  filteredOptions;
+  recipeName = '';
+  receipIngredientList: any[];
 
-  formGroup: FormGroup;
+  recipeData = {
+    protein: 0,
+    lipid: 0,
+    carbs: 0,
+    kcal: 0
+  }
 
   constructor(private router: Router, private ingredientService: IngredientService, private apifood: ApiService, private receipService: ReceipService, private fb: FormBuilder) {
     this.myIngredientsId = [];
     this.myIngredients = []
     this.myIngredientsNames = [];
     this.mySearchedIngredients = [];
+    this.receipIngredientList = [];
   }
 
   ngOnInit(): void {
@@ -74,7 +81,6 @@ export class RegisterReceiptsComponent implements OnInit {
     this.ingredientData.unit = this.myIngredients[index].unit;
     this.ingredientData.quantity = this.myIngredients[index].quantity;
     
-    
     //this.ingredientData._id = this.myIngredients[index]
   }
 
@@ -82,39 +88,52 @@ export class RegisterReceiptsComponent implements OnInit {
     this.filterData(event.target.value);
   }
 
-  onCreate2(){
+  onKeyQty(event: any){
+    this.ingredientQty = event.target.value;
+  }
+
+  onKeyRecipeName(event: any){
+    this.recipeName = event.target.value;
+  }
+
+  onRecipeName(event: any){
 
   }
 
   onAdd() {
-    //this.ingredientList.push({ ...this.ingredientData });
+    if(this.ingredientQty > 0){
+      let qty = this.ingredientQty;
+      let ing = JSON.parse(JSON.stringify(this.ingredientData));
+      this.receipIngredientList.push(
+        {
+          qty: qty,
+          ingredient: ing
+        }
+      );      
+      this.recipeData.protein += this.ingredientData.protein*this.ingredientQty;
+      this.recipeData.kcal += this.ingredientData.kcal*this.ingredientQty;
+      this.recipeData.lipid += this.ingredientData.lipid*this.ingredientQty;
+      this.recipeData.carbs += this.ingredientData.carbs*this.ingredientQty;
+      
+    }
+    else{
+      console.log('unvalid quantity');
+      
+    }
   }
-  onCreate(form: NgForm) {
 
-    let sum = {
-      protein: 0,
-      lipid: 0,
-      carbs: 0,
-      kcal: 0
-    }
+  onCreate() {
 
-    this.ingredientList.forEach(
-      a => (
-        sum.protein += a.protein,
-        sum.carbs += a.carbs,
-        sum.lipid += a.lipid,
-        sum.kcal += a.kcal
-      )
-    )
-    let receipData = {
-      name: form.value.name,
-      ingredients: this.ingredientList,
-      protein: sum.protein,
-      lipid: sum.lipid,
-      carbs: sum.carbs,
-      kcal: sum.kcal,
+    let newRecipe = {
+      name: this.recipeName,
+      ingredients: this.receipIngredientList,
+      protein: this.recipeData.protein,
+      lipid: this.recipeData.lipid,
+      carbs: this.recipeData.carbs,
+      kcal: this.recipeData.kcal,
     }
-    this.receipService.addReceip(receipData).then(() => this.router.navigate(['/recipes']));
+    
+    this.receipService.addReceip(newRecipe).then(() => this.router.navigate(['/recipes']));
 
   }
 

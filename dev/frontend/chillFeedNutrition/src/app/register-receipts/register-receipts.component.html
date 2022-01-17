@@ -21,7 +21,7 @@
                             <div class="col-md-8">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Name" name="name" value="{{ingredientData.name}}"
-                                    [disabled]="true">
+                                        [disabled]="true">
                                 </mat-form-field>
 
                             </div>
@@ -34,28 +34,28 @@
                                             value="{{ingredientData.protein}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
-    
+
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Lipid" name="lipid" value="{{ingredientData.lipid}}"
-                                            type="number" [disabled]="true">
+                                        <input matInput placeholder="Lipid" name="lipid"
+                                            value="{{ingredientData.lipid}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
-    
+
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Carbs" name="carbs" value="{{ingredientData.carbs}}"
-                                            type="number" [disabled]="true">
+                                        <input matInput placeholder="Carbs" name="carbs"
+                                            value="{{ingredientData.carbs}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
-    
+
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
                                         <input matInput placeholder="kcal" name="kcal" value="{{ingredientData.kcal}}"
                                             type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
-    
+
                             </div>
 
                             <div class="row">
@@ -66,24 +66,25 @@
                                             value="{{ingredientData.quantity}}" type="number" [disabled]="true">
                                     </mat-form-field>
                                 </div>
-    
+
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Unit" name="unit" value="{{ingredientData.unit}}"
-                                        [disabled]="true">
+                                            [disabled]="true">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Recipe quantity" name="recipeQty" type="number" ngModel required>
+                                        <input matInput placeholder="Recipe quantity" name="recipeQty" type="number"
+                                            (keyup)="onKeyQty($event)">
                                     </mat-form-field>
                                 </div>
-    
+
                                 <div class="col-md-3">
-                                    <button class="btn btn-warning pull-right" (click)="onCreate2()">Add</button>
+                                    <button class="btn btn-warning pull-right" (click)="onAdd()">Add</button>
                                 </div>
-    
+
                             </div>
 
                         </div>
@@ -140,7 +141,7 @@
                                     (selectionChange)="onChangeMyIngredients($event)">
                                     <mat-list-option class="list-single-selection-example"
                                         *ngFor="let ingredient of mySearchedIngredients" value="{{ingredient}}">
-                                        {{ingredient}} 
+                                        {{ingredient}}
                                     </mat-list-option>
                                 </mat-selection-list>
 
@@ -156,46 +157,70 @@
 
 
             <div class="col-lg-6 col-md-12">
+
                 <div class="card">
+
                     <div class="card-header card-header-tabs card-header-warning">
+
                         <div class="nav-tabs-navigation">
                             <div class="nav-tabs-wrapper">
                                 <span class="nav-tabs-title">Your Recipe:</span>
                             </div>
                         </div>
+
                     </div>
+
                     <div class="card-body">
+
                         <div class="tab-content">
+
                             <div class="tab-pane active" id="profile">
+
+                                <div class="row">
+
+                                    <div class="col-8">
+
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Name" name="name"
+                                                (keyup)="onKeyRecipeName($event)">
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div class="col-4">
+
+                                        <button mat-raised-button class="btn btn-warning pull-right"
+                                            (click)=onCreate()>Create</button>
+
+                                    </div>
+
+                                </div>
+
                                 <table class="table">
                                     <tbody>
-                                        <tr *ngFor="let ingredient of this.ingredientList">
-                                            <td> {{ingredient.name}}</td>
+                                        <tr *ngFor="let ing of receipIngredientList; let index = i">
+
+                                            <td> {{ing.ingredient.name}}   ===>   Quantity : {{ing.qty}}</td>
                                             <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Remove"
-                                                    (click)="onRemoveIngredient(ingredient)" *ngIf="ingredient"
+                                                    (click)="onRemoveIngredient(ing)" *ngIf="ing"
                                                     [matTooltipPosition]="'above'"
                                                     class="btn btn-warning btn-link btn-sm btn-just-icon">
                                                     <i class="material-icons">close</i>
                                                 </button>
                                             </td>
+
                                         </tr>
                                     </tbody>
                                 </table>
-                                <form method="post" (ngSubmit)="onCreate(ff)" #ff="ngForm">
-                                    <div class="col-md-4">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Name" name="name" ngModel required>
-                                        </mat-form-field>
-                                    </div>
-                                    <button mat-raised-button class="btn btn-warning pull-right"
-                                        [disabled]="ff.invalid">Create</button>
-                                </form>
 
                             </div>
+
                         </div>
+
                     </div>
                 </div>
+
             </div>
 
         </div>
