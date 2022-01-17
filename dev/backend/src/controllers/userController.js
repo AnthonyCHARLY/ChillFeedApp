@@ -119,16 +119,9 @@ module.exports.getCustomers = async function(id) {
     }
 }
 
-<<<<<<< HEAD
-module.exports.addIngredient = async function(id, body) {
-    try {
-        console.log(body);
-        let ingredient = new Ingredient({
-=======
 module.exports.addIngredient = async function(id,body){
     try{
         let ingredient  = new Ingredient({
->>>>>>> userH
             ...body
         });
         let user = await User.findById(id);

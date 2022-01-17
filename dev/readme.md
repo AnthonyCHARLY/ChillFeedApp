@@ -22,7 +22,6 @@ les routes de cette api sont dispnoble au format swagger en suivant le lien : <h
 
 - lancer les commandes suivantes :
 ```sh
-<<<<<<< HEAD
 $ cd backend
 ```
 ```sh
@@ -30,24 +29,11 @@ $ npm install
 ```
 ```sh
 $ npm run start
-=======
-cd backend
-```
-```sh
-npm install 
-```
-```sh
-npm run start
->>>>>>> userH
 ```
 ### Avec Docker
 
 ```sh
-<<<<<<< HEAD
 $ cd backend
-=======
-cd backend
->>>>>>> userH
 ```
 1. créer l'image à partir du docker file 
 
