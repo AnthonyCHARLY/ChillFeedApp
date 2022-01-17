@@ -24,6 +24,7 @@ export class ClientCurveComponent implements OnInit {
   lastWeight : any;
   newWeight : any;
   valueWeight : number ;
+  today: number = Date.now();
 
 
   currentClient: any;
