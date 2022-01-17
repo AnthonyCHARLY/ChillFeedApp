@@ -17,9 +17,9 @@ export class WeekNeedsPlanningComponent implements OnInit {
 
     websiteViewsChart : any;
     datawebsiteViewsChart = {
-      labels: ['Monday'],
+      labels: ['Lipids','Protein','Kcal'],
       series: [
-        [2000]
+        [2000,2000,2000]
   
       ]
     };

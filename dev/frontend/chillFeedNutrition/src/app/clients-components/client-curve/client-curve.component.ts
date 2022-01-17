@@ -90,6 +90,9 @@ export class ClientCurveComponent implements OnInit {
       this.valueWeight= (this.newWeight - this.lastWeight);
     }
 
+    this.customerServie.updateWeight(this.currentClient._id,form.value.weight,this);
+  
+    
     
     this.ngOnInit();
   }
