@@ -76,23 +76,29 @@ export class RecipesComponent implements OnInit {
     this.filterData(event.target.value);
   }
 
-  onRemoveRecipe(recipe:string){
+  onRemoveRecipe(){
     console.log('salut');
     
-    let index = this.myRecipesNames.indexOf(recipe);
-    let indexSearch = this.mySearchedRecipes.indexOf(recipe);
-    let indexId = this.myRecipesId.indexOf(this.myRecipes[index]._id);
+    let index = this.myRecipesNames.indexOf(this.recipeData.name);
+    let indexSearch = this.mySearchedRecipes.indexOf(this.recipeData.name);
+    let indexId = this.myRecipesId.indexOf(this.recipeData._id);
     console.log('bonjour');
     
-    console.log(recipe);
-    
 
-    this.receipService.removeReceip(this.myRecipes[index]._id).then(
+    this.receipService.removeReceip(this.recipeData._id).then(
       () => {
         this.myRecipesId.splice(indexId,1);
         this.myRecipesNames.splice(index,1);
         this.myRecipes.splice(index,1);
         this.mySearchedRecipes.splice(indexSearch,1);
+        this.recipeData = {
+            _id: '',
+            name: '',
+            protein: 0,
+            lipid: 0,
+            carbs: 0,
+            kcal: 0
+        }
       }
     );
     

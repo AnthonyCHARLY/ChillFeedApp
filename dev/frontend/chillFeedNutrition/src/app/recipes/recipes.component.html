@@ -45,10 +45,6 @@
 
                                         <div class="col-12">
                                             <label>{{recipe}}</label>
-
-                                            <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveRecipe(recipe)" [matTooltipPosition]="'above'" class="btn btn-warning btn-link btn-sm btn-just-icon pull-right">
-                                                <i class="material-icons">close</i>
-                                            </button>
                                         </div>
                                     </mat-list-option>
 
@@ -98,6 +94,11 @@
                                     <td> {{recipeData.lipid}}</td>
                                     <td> {{recipeData.kcal}}</td>
                                     <td> {{recipeData.carbs}}</td>
+                                    <td>
+                                        <button mat-raised-button type="button" matTooltip="Remove" (click)="onRemoveRecipe()" [matTooltipPosition]="'above'" class="btn btn-warning btn-link btn-sm btn-just-icon pull-right">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
 
                                 </tbody>
 
